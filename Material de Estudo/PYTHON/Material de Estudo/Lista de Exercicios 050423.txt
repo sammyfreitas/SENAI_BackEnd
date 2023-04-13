@@ -1,0 +1,20 @@
+1) Desenvolva um algoritmo que leia dois números innteiros e mostre o somaório entre eles.Ex:
+Digite um valor: 8
+Digite outro valor: 5
+A soma entre 8 e 5 é igual 13.
+---------------------------------------------------------
+2) Desenvolva um algoritmo que leia um número N e imprima "F1" ou "F2" ou "F3", conforme a condição
+
+"F1", se N <=10
+"F2", se N > 10 and N <=100
+"F3", se N > 100
+---------------------------------------------------------
+3) Construa um algoritmo que receba como entrada três valores e os imprima em ordem crescente
+
+maior que >
+igual == 
+diferente !=
+---------------------------------------------------------
+4) Faça um algoritmo que leia 2 números e mostre qual o maior dos dois
+---------------------------------------------------------
+
