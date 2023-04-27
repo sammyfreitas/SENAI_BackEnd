@@ -1,0 +1,64 @@
+# SENAI_BackEnd
+Prof Victor
+---------------------------------------------------------
+05/04/23
+---------------------------------------------------------
+1) Desenvolva um algoritmo que leia dois números innteiros e mostre o somaório entre eles.Ex:
+- Digite um valor: 
+- Digite outro valor: 
+- A soma entre v1 e v2 é igual soma.
+---------------------------------------------------------
+2) Desenvolva um algoritmo que leia um número N e imprima "F1" ou "F2" ou "F3", conforme a condição
+- 'F1', se N <=10
+- 'F2', se N > 10 and N <=100
+- 'F3', se N > 100
+---------------------------------------------------------
+3) Construa um algoritmo que receba como entrada três valores e os imprima em ordem crescente
+---------------------------------------------------------
+4) Faça um algoritmo que leia 2 números e mostre qual o maior dos dois
+---------------------------------------------------------
+06/04/23
+---------------------------------------------------------
+5) Faça um algoritmo que receba 5 valores e calcule a média de 5 números e imprima o valor
+---------------------------------------------------------
+6) Faça um algoritmo que receba 5 valores e calcule a média:
+- se o valor for maior que 7 - printa a média e uma mensagem
+- se ficar entre 4 e 6,9 - printa a média e outra mensagem
+- se ficar abaixo de 4 - printa a média e uma mensagem
+---------------------------------------------------------
+7) Um determinado clube de futebol pretende classificar seus atletas em categorias e para isto ele contratou um programador para criar um programa que executasse uma tarefa. Para isso o clube criou uma tabela que continha a faixa etária do atleta e sua categoria. 
+A tabela está demonstrada abaixo
+IDADE 
+- 5 A 10 INFANTIL
+- 11 A 15 JUVENIL
+- 16 A 20 JUNIOR
+- 21 A 25 PROFISSIONAL
+---------------------------------------------------------
+8) O programa de uma loja de móveis mostra o seguinte menu na tela de vendas:
+- 1 - venda a vista
+- 2 - venda a prazo 30 dias
+- 3 - venda a prazo 60 dias
+- 4 - venda a prazo 90 dias
+- 5 - venda com cartão de débito
+- 6 - venda com cartão de crédito
+>Escolha a opção / Mostrar a opção escolhida
+---------------------------------------------------------
+9) Crie um algoritmo que entre com 2 variáveis para uma calculadora utilizando a instrução IF para determinar a operação que deve ser executada, conforme o usuário escolher no menu opções. conforme a opção escolhida pelo usuário:
+- Adição 
+- Subtração 
+- Multiplicação
+- Divisão
+---------------------------------------------------------
+10) Construa um algoritmo que leia um número inteiro de 1 a 7 e 
+- informe o dia da semana correspondente 
+- sendo domingo o dia de número 1;
+- Se o número não corresponder a um dia da semana, mostre uma mensagem de erro
+---------------------------------------------------------
+11) Faça um programa que lê quatro valores: I,A,B e C, onde I é um número inteiro positivo e ABC são quaisquer valores reais
+
+O programa deve escrever os valores lidos e 
+- se I = 1, escrever os três valores ABC em ordem crescente
+- se I = 2, escrever os três valores ABC em ordem decrescente
+- se I = 3, escrever os três valores ABC de forma que o maior valor fique entre os outros dois
+- se I não for uma das três opções, dar uma mensagem indicando isso
+---------------------------------------------------------
