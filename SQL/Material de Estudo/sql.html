@@ -1,0 +1,951 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>SQL para a Manutenção em Bancos de Dados</title>
+</head>
+
+<body>
+
+<p align="center"><font size="5" face="Arial"><strong>SQL para a
+Manutenção em Bancos de Dados</strong></font></p>
+
+<p align="center"><font size="5" face="Arial"><strong></strong></font>&nbsp;</p>
+
+<p><font size="4" face="Arial">Atenção:</font></p>
+
+<p><font size="2" face="Arial">Esta apostila foi desenvolvida com
+o <b>auxílio on-Line</b> do banco <b>MS-ACCESS</b>, O <b>SQL</b>
+para este banco não é totalmente compatível com o <b>SQL
+Padrão ANSI</b>, que é o oficial na maioria dos bancos de
+dados, então algumas cláusulas podem não funcionar em outros
+bancos.</font></p>
+
+<p><font size="2" face="Arial"></font>&nbsp;</p>
+
+<p><font size="5" face="Arial"><b>Instrução SELECT</b></font></p>
+
+<p><font size="2" face="Arial">Instrui o programa principal do
+banco de dados para retornar a informação como um conjunto de
+registros. </font></p>
+
+<p><font face="Arial">Sintaxe</font></p>
+
+<p><font size="2" face="Arial">SELECT [predicado { * | tabela.* |
+[tabela.]campo1 [AS alias1] [, [tabela.]campo2 [AS alias2] [,
+...]]}</font></p>
+
+<p><font size="2" face="Arial">FROM expressãotabela [, ...] [IN
+bancodedadosexterno]</font></p>
+
+<p><font size="2" face="Arial">[WHERE... ]</font></p>
+
+<p><font size="2" face="Arial">[GROUP BY... ]</font></p>
+
+<p><font size="2" face="Arial">[HAVING... ]</font></p>
+
+<p><font size="2" face="Arial">[ORDER BY... ]</font></p>
+
+<p><font size="2" face="Arial">[WITH OWNERACCESS OPTION]</font></p>
+
+<p><font size="2" face="Arial">A instrução SELECT tem as partes
+abaixo:</font></p>
+
+<p><font size="2" face="Arial"><b>Parte Descrição</b></font></p>
+
+<p><font color="#800000" size="2" face="Arial">predicado</font><font
+size="2" face="Arial"> Um dos seguintes predicados: ALL,
+DISTINCT, DISTINCTROW ou TOP. </font></p>
+
+<p align="left"><font size="2" face="Arial">Você usa o predicado
+para restringir o número de registros que retornam. Se nenhum
+for especificado, o padrão será ALL.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">*</font><font
+size="2" face="Arial"> Especifica que todos os campos da tabela
+ou tabelas especificadas são selecionados.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">tabela</font><font
+size="2" face="Arial"> O nome da tabela que contém os campos dos
+quais os registros são selecionados.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">campo1, campo2</font><font
+size="2" face="Arial"> Os nomes dos campos dos quais os dados
+serão recuperados. Se você incluir mais de um campo, eles
+serão recuperados na ordem listada.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">alias1, alias2</font><font
+size="2" face="Arial"> Os nomes que serão usados como títulos
+de colunas em vez dos nomes originais das colunas na tabela.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">expressãotabela</font><font
+size="2" face="Arial"> O nome da tabela ou tabelas contendo os
+dados que você quer recuperar.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">bancodedadosexterno</font><font
+size="2" face="Arial"> O Nome do banco de dados que contém as
+tabelas em expressãotabela se não estiver no banco de dados
+atual.</font></p>
+
+<p><font face="Arial">Comentários</font></p>
+
+<p><font size="2" face="Arial">Para executar esta operação, o
+programa principal de banco de dados procura a tabela ou tabelas
+especificadas, extrai as colunas escolhidas, seleciona as linhas
+que satisfazem o critério e classifica ou agrupa as linhas
+resultantes na ordem especificada. </font></p>
+
+<p><font size="2" face="Arial">A instrução SELECT <b>não muda </b>os
+dados no banco de dados. </font></p>
+
+<p><font size="2" face="Arial">SELECT é normalmente a primeira
+palavra em uma instrução SQL. A maior parte das instruções
+SQL são instruções SELECT. </font></p>
+
+<p><font size="2" face="Arial">A sintaxe mínima da instrução
+SELECT é:</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT campos FROM
+tabela</font></p>
+
+<p><font size="2" face="Arial">Você pode usar um asterisco (*)
+para selecionar todos os campos na tabela. O exemplo abaixo
+seleciona todos os campos na tabela Funcionários: </font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT * FROM
+Funcionários;</font></p>
+
+<p><font size="2" face="Arial">Se o nome de um campo estiver
+incluído em mais de uma tabela na cláusula FROM, preceda-o com
+o nome da tabela e o operador . (ponto). No exemplo abaixo, o
+campo Departamento está nas tabelas Funcionários e
+Supervisores. A instrução SQL seleciona Departamento da tabela
+Funcionários e NomeSupv da tabela Supervisores: </font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT
+Funcionários.Departamento, Supervisores.NomeSupv</font></p>
+
+<p align="center"><font size="2" face="Arial">FROM Funcionários
+INNER JOIN Supervisores</font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE
+Funcionários.Departamento = Supervisores.Departamento;</font></p>
+
+<p><font size="2" face="Arial">Ao criar um objeto Recordset, o
+programa principal de banco de dados do Jet usa o nome do campo
+da tabela como o nome do objeto Field no objeto Recordset. Se
+você quiser um nome de campo diferente ou um nome que não
+esteja implícito na expressão usada para gerar o campo, use a
+palavra reservada AS. O exemplo abaixo usa o título Nasc para
+nomear o objeto Field retornado no objeto Recordset resultante: </font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT DataNasc AS
+Nasc FROM Funcionários;</font></p>
+
+<p><font size="2" face="Arial">Sempre que você usar funções
+aggregate ou consultas que retornem nomes de objetos Field
+ambíguos ou duplicados, você precisará usar a cláusula AS
+para fornecer um nome alternativo para o objeto Field. O exemplo
+abaixo usa o título Contagem para nomear o objeto Field
+retornado no objeto Recordset resultante: </font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT
+COUNT(FuncionárioID) AS Contagem FROM Funcionários;</font></p>
+
+<p><font size="2" face="Arial">Você pode usar outras cláusulas
+na instrução SELECT para restringir e organizar posteriormente
+os seus dados retornados. </font></p>
+
+<p><font face="Arial">Cláusula GROUP BY</font></p>
+
+<p><font size="2" face="Arial">GROUP BY é opcional. Valores de
+resumo são omitidos se não houver qualquer função aggregate
+SQL na instrução SELECT. Os valores Null nos campos GROUP BY
+são agrupados e não omitidos. No entanto, os valores Null não
+são avaliados em qualquer função aggregate SQL. Use a
+cláusula WHERE para excluir linhas que você não quer agrupadas
+e use a cláusula HAVING para filtrar os registros após eles
+terem sido agrupados.</font></p>
+
+<p><font size="2" face="Arial">A não ser que contenha dados Memo
+ou OLE Object, um campo na lista de campos GROUP BY pode fazer
+referência a qualquer campo em qualquer tabela listada na
+cláusula FROM. Mesmo que o campo não esteja incluído na
+instrução SELECT, fornecida a instrução SELECT, inclua pelo
+menos uma função SQL. O programa principal de banco de dados do
+Jet não pode agrupar campos Memo ou OLE Objects. </font></p>
+
+<p><font size="2" face="Arial">Todos os campos na lista de campos
+SELECT devem ser incluídos na cláusula GROUP BY ou incluídos
+como argumentos em uma função aggregate SQL.</font></p>
+
+<p><font face="Arial">Cláusula HAVING</font></p>
+
+<p><font size="2" face="Arial">HAVING é opcional. HAVING é
+semelhante a WHERE, que determina quais registros são
+selecionados. Depois que os registros são agrupados com GROUP
+BY, HAVING determina quais registros são exibidos:</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT CategoriaID,
+Sum(UnidadesNoEstoque) FROM Produtos</font></p>
+
+<p align="center"><font size="2" face="Arial">GROUP BY
+CategoriaID</font></p>
+
+<p align="center"><font size="2" face="Arial">HAVING
+Sum(UnidadesNoEstoque) &gt; 100 AND LIKE &quot;BOS*&quot;;</font></p>
+
+<p><font size="2" face="Arial">Uma cláusula HAVING pode conter
+até 40 expressões vinculadas por operadores lógicos, como And
+ou Or.</font></p>
+
+<p><font face="Arial">Cláusula ORDER BY</font></p>
+
+<p><font size="2" face="Arial">ORDER BY é opcional. Entretanto,
+se você quiser exibir seus dados na ordem classificada, você
+deve utilizar ORDER BY. O padrão ordem de classificação é
+ascendente (A a Z, 0 a 9). Os dois exemplos abaixo classificam os
+nomes dos funcionários pelo sobrenome.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Nome FROM Funcionários ORDER BY Sobrenome;</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Nome FROM Funcionários ORDER BY Sobrenome ASC;</font></p>
+
+<p><font size="2" face="Arial">Para classificar em ordem
+descendente (Z a A, 9 a 0), adicione a palavra reservada DESC ao
+final de cada campo que você quiser classificar em ordem
+descendente. O exemplo abaixo seleciona salários e os classifica
+em ordem descendente</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Salário FROM Funcionários ORDER BY Salário DESC, Sobrenome;</font></p>
+
+<p><font size="2" face="Arial">Se você especificar um campo que
+contém dados Memo ou OLE Objects na cláusula ORDER BY, um erro
+ocorrerá. O programa principal de banco de dados do Jet não
+classifica campos deste tipo. ORDER BY é normalmente o último
+item em uma instrução SQL. </font></p>
+
+<p><font size="2" face="Arial">Você pode incluir campos
+adicionais na cláusula ORDER BY. Os registros são classificados
+primeiro pelo primeiro campo listado depois de ORDER BY. Os
+registros que tiverem valores iguais naquele campo são
+classificados pelo valor no segundo campo listado e assim por
+diante.</font></p>
+
+<p><font face="Arial">Cláusula WITH OWNERACCESS OPTION</font></p>
+
+<p><font size="2" face="Arial">A declaração WITH OWNERACCESS
+OPTION é opcional. O exemplo abaixo habilita o usuário a ver as
+informações de salário (mesmo que não tenha outra permissão
+para ver a tabela Folha de Pagamentos) desde que o proprietário
+da consulta tenha tal permissão:</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Nome, Salário FROM Funcionários ORDER BY Sobrenome</font></p>
+
+<p align="center"><font size="2" face="Arial">WITH OWNERACCESS
+OPTION;</font></p>
+
+<p><font size="2" face="Arial">Se, por outro lado, um usuário
+for impedido de criar ou anexar a uma tabela, você poderá usar
+WITH OWNERACCESS OPTION para habilitá-lo a executar uma consulta
+construção de tabela ou consulta anexação. Se você quiser
+reforçar as configurações de segurança do grupo de trabalho e
+as permissões dos usuários, não inclua a declaração WITH
+OWNERACCESS OPTION. Esta opção exige que você tenha acesso ao
+arquivo System.mda associado ao banco de dados. É realmente
+útil em implementações de multiusuários seguras.</font></p>
+
+<p><font face="Arial">Exemplo da instrução SELECT, cláusula
+FROM</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo seleciona os campos
+&quot;Sobrenome&quot; e &quot;Nome&quot; de todos os registros da
+tabela &quot;Funcionários&quot;.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Nome FROM Funcionários</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo seleciona todos os
+campos da tabela &quot;Funcionários&quot;.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT
+Funcionários.* FROM Funcionários;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo conta o número de
+registros que têm uma entrada no campo &quot;CódigoPostal&quot;
+e nomeia o campo retornado como &quot;Tcp&quot;.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT
+Count(CódigoPostal) AS Tcp FROM Clientes;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo mostra qual seria o
+salário se cada funcionário recebesse um aumento de 10
+porcento. Não altera o valor original dos salários.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Salário AS Atual, Salário * 1.1 AS Proposto FROM Funcionários;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo coloca o título Nome
+no topo da coluna &quot;Sobrenome&quot;. O título Salário é
+exibido no topo da coluna &quot;Salário&quot;.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome AS
+Nome, Salário FROM Funcionários;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo mostra o número de
+funcionários e os salários médio e máximo.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Count(*) AS
+[Total de Funcionários], Avg(Salário) AS [Salário Médio],
+Max(Salário) AS [Salário Máximo] FROM Funcionários;</font></p>
+
+<p><font size="2" face="Arial">Para cada registro, mostra
+Sobrenome e Salário no primeiro e último campos. A seqüência
+de caracteres &quot;tem um salário de&quot; é retornada como o
+campo do meio de cada registro.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+'tem um salário de', Salário FROM Funcionários;</font></p>
+
+<p><font face="Arial">Exemplo de cláusula GROUP BY</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo cria uma lista de
+nomes de departamentos únicos e o número de funcionários em
+cada um destes departamentos.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT
+Departamento, Count([Departamento]) AS Tbc FROM Funcionários </font></p>
+
+<p align="center"><font size="2" face="Arial">GROUP BY
+Departamento;</font></p>
+
+<p><font size="2" face="Arial">Para cada título de função
+único, calcula o número de funcionários do departamento de
+Vendas que têm este título.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Título,
+Count(Título) AS Tbc FROM Funcionários </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE Departamento
+= 'Vendas' GROUP BY Título;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo calcula o número de
+itens em estoque para cada combinação de número e cor do item.
+</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Item,
+Sum(Unidades) AS Tbc FROM ItensEmEstoque </font></p>
+
+<p align="center"><font size="2" face="Arial">GROUP BY Item, Cor;</font></p>
+
+<p><font face="Arial">Exemplo de cláusula HAVING</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo seleciona os títulos
+de cargos do departamento de Produção atribuídos a mais de 50
+funcionários.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Título,
+Count(Título) FROM Funcionários WHERE Departamento =
+'Produção' </font></p>
+
+<p align="center"><font size="2" face="Arial">GROUP BY Título
+HAVING Count(Título) &gt; 50;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo seleciona os
+departamentos que tenham mais de 100 funcionários.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT
+Departamento, Count([Departamento]) FROM Funcionários </font></p>
+
+<p align="center"><font size="2" face="Arial">GROUP BY
+Departamento HAVING Count(Departamento) &gt; 100;</font></p>
+
+<p><font face="Arial">Exemplo de cláusula ORDER BY</font></p>
+
+<p><font size="2" face="Arial">As instruções SQL mostradas
+abaixo usam a cláusula ORDER BY para classificar os registros em
+ordem alfabética e depois por categoria.</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo ordena os registros
+pelo sobrenome, em ordem descendente (Z-A).</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Nome FROM Funcionários ORDER BY Sobrenome DESC;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo ordena, primeiro, por
+categoria ID e depois por nome do produto.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT CategoriaID,
+ProdutoNome, PreçoUnit FROM Produtos </font></p>
+
+<p align="center"><font size="2" face="Arial">ORDER BY
+CategoriaID, NomeProduto;</font></p>
+
+<p align="center"><font size="2" face="Arial"></font>&nbsp;</p>
+
+<p><font size="5" face="Arial"><b>Instrução INSERT INTO</b></font></p>
+
+<p><font size="2" face="Arial">Adiciona um ou vários registros a
+uma tabela. Isto é referido como consulta anexação.</font></p>
+
+<p><font face="Arial">Sintaxe</font></p>
+
+<p><font size="2" face="Arial">Consulta anexação de vários
+registros:</font></p>
+
+<p><font size="2" face="Arial">INSERT INTO destino [IN
+bancodedadosexterno] [(campo1[, campo2[, ...]])]</font></p>
+
+<p><font size="2" face="Arial">SELECT [origem.]campo1[, campo2[,
+...]</font></p>
+
+<p><font size="2" face="Arial">FROM expressãodetabela</font></p>
+
+<p><font size="2" face="Arial">Consulta anexação de um único
+registro:</font></p>
+
+<p><font size="2" face="Arial">INSERT INTO destino [(campo1[,
+campo2[, ...]])]</font></p>
+
+<p><font size="2" face="Arial">VALUES (valor1[, valor2[, ...])</font></p>
+
+<p><font size="2" face="Arial">A instrução INSERT INTO tem as
+partes abaixo:</font></p>
+
+<p><font size="2" face="Arial"><b>Parte Descrição</b></font></p>
+
+<p><font color="#800000" size="2" face="Arial">destino</font><font
+size="2" face="Arial"> O nome da tabela ou consulta em que os
+registros devem ser anexados.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">bancodedadosexterno</font><font
+size="2" face="Arial"> O caminho para um banco de dados externo.
+Para uma descrição do caminho, consulte a cláusula IN.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">origem</font><font
+size="2" face="Arial"> O nome da tabela ou consulta de onde os
+dados devem ser copiados.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">campo1, campo2</font><font
+size="2" face="Arial"> Os nomes dos campos aos quais os dados
+devem ser anexados, se estiverem após um argumento destino ou os
+nomes dos campos dos quais se deve obter os dados, se estiverem
+após um argumento origem.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">expressãodetabela</font><font
+size="2" face="Arial"> O nome da tabela ou tabelas das quais
+registros são inseridos. Este argumento pode ser um único nome
+de tabela ou uma combinação resultante de uma operação INNER
+JOIN, LEFT JOIN ou RIGHT JOIN ou de uma consulta gravada.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">valor1, valor2</font><font
+size="2" face="Arial"> Os valores para inserir em campos
+específicos do novo registro. Cada valor é inserido no campo
+que corresponde à posição do valor na lista: Valor1 é
+inserido no campo1 do novo registro, valor2 no campo2 e assim por
+diante. Você deve separar os valores com uma vírgula e colocar
+os campos de textos entre aspas (&quot; &quot;).</font></p>
+
+<p><font face="Arial">Comentários</font></p>
+
+<p><font size="2" face="Arial">Você pode usar a instrução
+INSERT INTO para adicionar um único registro a uma tabela usando
+a sintaxe de consulta anexação de um único registro como
+mostrado acima. Neste caso, seu código especifica o nome e o
+valor de cada campo do registro. Você precisa especificar cada
+um dos campos do registro para os quais um valor deve ser
+designado e um valor para este campo. Quando você não
+especifica cada campo, o valor padrão ou Null é inserido nas
+colunas omitidas. Os registros são adicionados no final da
+tabela.</font></p>
+
+<p><font size="2" face="Arial">Você também pode usar INSERT
+INTO para anexar um conjunto de registros de outra tabela ou
+consulta usando a cláusula SELECT ... FROM como é mostrado
+acima na sintaxe consulta anexação de vários registros. Neste
+caso, a cláusula SELECT especifica os campos para acrescentar à
+tabela destino especificada. </font></p>
+
+<p><font size="2" face="Arial">A tabela de origem ou de destino
+pode especificar uma tabela ou uma consulta. Se uma consulta for
+especificada, o programa principal de banco de dados do Microsoft
+anexa a qualquer e a todas as tabelas especificadas pela
+consulta. </font></p>
+
+<p align="center"><font size="2" face="Arial">INSERT INTO é
+opcional, mas quando incluída, precede a instrução SELECT. </font></p>
+
+<p><font size="2" face="Arial">Se sua tabela de destino contém
+uma chave primária, você deve acrescentar valores únicos, não
+Null ao campo ou campos da chave primária. Caso contrário, o
+programa principal de banco de dados do Jet não anexará os
+registros. </font></p>
+
+<p><font size="2" face="Arial">Se você anexar registros a uma
+tabela com um campo Counter e quiser numerar novamente os
+registros anexados, não inclua o campo Counter em sua consulta.
+Inclua o campo Counter na consulta se quiser manter os valores
+originais do campo.</font></p>
+
+<p><font size="2" face="Arial">Use a cláusula IN para anexar
+registros a uma tabela de outro banco de dados. Para achar quais
+registros serão anexados, antes de você executar a consulta
+anexação, primeiro execute e veja os resultados de uma consulta
+seleção que use o mesmo critério de seleção. </font></p>
+
+<p><font size="2" face="Arial">Uma operação de consulta
+anexação copia os registros de uma ou mais tabelas em outra. As
+tabelas que contêm os registros que você anexa não são
+afetadas pela operação de consulta anexação. </font></p>
+
+<p><font size="2" face="Arial">Em lugar de acrescentar registros
+existentes de outra tabela, você pode especificar o valor de
+cada campo em um único registro novo usando a cláusula VALUES.
+Se você omitir a lista de campo, a cláusula VALUES deve incluir
+um valor para cada campo na tabela; caso contrário, um erro
+ocorrerá em INSERT. Use uma instrução adicional INSERT INTO
+com uma cláusula VALUES para cada registro adicional que você
+quiser criar. </font></p>
+
+<p><font face="Arial">Exemplo de instrução INSERT INTO</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo seleciona todos os
+registros de uma tabela hipotética &quot;Novos Clientes&quot; e
+os adiciona à tabela &quot;Clientes&quot; (quando não são
+designadas colunas individuais, os nomes das colunas das tabelas
+SELECT devem corresponder exatamente aos da tabela INSERT INTO).</font></p>
+
+<p align="center"><font size="2" face="Arial">INSERT INTO
+Clientes SELECT [Novos Clientes].* </font></p>
+
+<p align="center"><font size="2" face="Arial">FROM [Novos
+Clientes];</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo cria um novo registro
+na tabela &quot;Funcionários&quot;</font></p>
+
+<p align="center"><font size="2" face="Arial">INSERT INTO
+Funcionários (Nome,Sobrenome, Título) </font></p>
+
+<p align="center"><font size="2" face="Arial">VALUES
+(&quot;André&quot;, &quot;Pereira&quot;,
+&quot;Estagiário&quot;);</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo seleciona todos os
+estagiários de uma tabela hipotética &quot;Estagiários&quot;
+que foram contratados há mais de 30 dias e adiciona seus
+registros à tabela &quot;Funcionários&quot;.</font></p>
+
+<p align="center"><font size="2" face="Arial">INSERT INTO
+Funcionários SELECT Estagiários.* </font></p>
+
+<p align="center"><font size="2" face="Arial">FROM Estagiários
+WHERE DataContrato &lt; Now() - 30;</font></p>
+
+<p align="center"><font size="2" face="Arial"></font>&nbsp;</p>
+
+<p><font size="5" face="Arial"><b>Declaração UPDATE</b></font></p>
+
+<p><font size="2" face="Arial">Cria uma consulta atualização
+que altera os valores dos campos em uma tabela especificada com
+base em critérios específicos.</font></p>
+
+<p><font face="Arial">Sintaxe</font></p>
+
+<p><font size="2" face="Arial">UPDATE tabela</font></p>
+
+<p><font size="2" face="Arial">SET valornovo</font></p>
+
+<p><font size="2" face="Arial">WHERE critério;</font></p>
+
+<p><font size="2" face="Arial">A instrução UPDATE tem as partes
+abaixo:</font></p>
+
+<p><font size="2" face="Arial"><b>Parte Descrição</b></font></p>
+
+<p><font color="#800000" size="2" face="Arial">tabela</font><font
+size="2" face="Arial"> O nome da tabela cujos os dados você quer
+modificar.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">valornovo</font><font
+size="2" face="Arial"> Uma expressão que determina o valor a ser
+inserido em um campo específico nos registros atualizados.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">critério</font><font
+size="2" face="Arial"> Uma expressão que determina quais
+registros devem ser atualizados. Só os registros que satisfazem
+a expressão são atualizados.</font></p>
+
+<p><font face="Arial">Comentários</font></p>
+
+<p><font size="2" face="Arial">UPDATE é especialmente útil
+quando você quer alterar muitos registros ou quando os registros
+que você quer alterar estão em várias tabelas. Você pode
+alterar vários campos ao mesmo tempo. O exemplo abaixo aumenta o
+Valor do Pedido em 10 por cento e o valor do Frete em 3 por cento
+para embarques do Reino Unido: </font></p>
+
+<p align="center"><font size="2" face="Arial">UPDATE Pedidos SET
+ValorPedido = ValorPedido * 1.1, Frete = Frete * 1.03</font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE PaísEmbarque
+= 'RU';</font></p>
+
+<p><font size="2" face="Arial">UPDATE não gera um conjunto de
+resultados. Se você quiser saber quais resultados serão
+alterados, examine primeiro os resultados da consulta seleção
+que use os mesmos critérios e então execute a consulta
+atualização. </font></p>
+
+<p><font face="Arial">Exemplo de instrução UPDATE</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo muda os valores no
+campo &quot;RelatórioPara&quot; para 5 para todos os registros
+de funcionários que atualmente têm valores de RelatórioPara de
+2.</font></p>
+
+<p align="center"><font size="2" face="Arial">UPDATE
+Funcionários SET RelatórioPara = 5 WHERE RelatórioPara = 2;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo aumenta o
+&quot;PreçoUnit&quot; de todos os produtos não suspensos do
+fornecedor 8 em 10 porcento.</font></p>
+
+<p align="center"><font size="2" face="Arial">UPDATE Produtos SET
+PreçoUnit = PreçoUnit * 1.1 </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE FornecedorID
+= 8 AND Suspenso = No;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo reduz o PreçoUnit de
+todos os produtos não suspensos fornecidos pela Tokyo Traders em
+5 porcento. As tabelas &quot;Produtos&quot; e
+&quot;Fornecedores&quot; têm uma relação um para vários.</font></p>
+
+<p align="center"><font size="2" face="Arial">UPDATE Fornecedores
+INNER JOIN Produtos </font></p>
+
+<p align="center"><font size="2" face="Arial">ON
+Fornecedores.FornecedorID = Produtos.FornecedorID SET PreçoUnit
+= PreçoUnit * .95 </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE NomeEmpresa =
+'Tokyo Traders' AND Suspenso = No;</font></p>
+
+<p align="center"><font size="2" face="Arial"></font>&nbsp;</p>
+
+<p><font size="5" face="Arial"><b>Instrução DELETE</b></font></p>
+
+<p><font size="2" face="Arial">Cria uma consulta exclusão que
+remove registros de uma ou mais tabelas listadas na cláusula
+FROM que satisfaz a cláusula WHERE.</font></p>
+
+<p><font face="Arial">Sintaxe</font></p>
+
+<p><font size="2" face="Arial">DELETE [tabela.*]</font></p>
+
+<p><font size="2" face="Arial">FROM tabela</font></p>
+
+<p><font size="2" face="Arial">WHERE critério</font></p>
+
+<p><font size="2" face="Arial">A instrução DELETE tem as partes
+abaixo:</font></p>
+
+<p><font size="2" face="Arial"><b>Parte Descrição</b></font></p>
+
+<p><font color="#800000" size="2" face="Arial">tabela.*</font><font
+size="2" face="Arial"> O nome opcional da tabela da qual os
+registros são excluídos.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">tabela</font><font
+size="2" face="Arial"> O nome da tabela da qual os registros são
+excluídos.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">critério</font><font
+size="2" face="Arial"> Uma expressão que determina qual registro
+deve ser excluído.</font></p>
+
+<p><font size="2" face="Arial"><b>Comentários</b></font></p>
+
+<p><font size="2" face="Arial">DELETE é especialmente útil
+quando você quer excluir muitos registros. Para eliminar uma
+tabela inteira do banco de dados, você pode usar o método
+Execute com uma instrução DROP. </font></p>
+
+<p><font size="2" face="Arial">Entretanto, se você eliminar a
+tabela, a estrutura é perdida. Por outro lado, quando você usa
+DELETE, apenas os dados são excluídos. A estrutura da tabela e
+todas as propriedades da tabela, como atributos de campo e
+índices, permanecem intactos. </font></p>
+
+<p><font size="2" face="Arial">Você pode usar DELETE para
+remover registros de tabelas que estão em uma relação um por
+vários com outras tabelas. Operações de exclusão em cascata
+fazem com que os registros das tabelas que estão no lado
+&quot;vários&quot; da relação sejam excluídos quando os
+registros correspondentes do lado &quot;um&quot; da relação
+são excluídos na consulta. Por exemplo, nas relações entre as
+tabelas Clientes e Pedidos, a tabela Clientes está do lado
+&quot;um&quot; e a tabela Pedidos está no lado
+&quot;vários&quot; da relação. Excluir um registro em Clientes
+faz com que os registros correspondentes em Pedidos sejam
+excluídos se a opção de exclusão em cascata for especificada.</font></p>
+
+<p><font size="2" face="Arial">Uma consulta de exclusão exclui
+registros inteiros e não apenas dados em campos específicos. Se
+você quiser excluir valores de um campo específico, crie uma
+consulta atualização que mude os valores para Null. </font></p>
+
+<p><font face="Arial">Importante </font></p>
+
+<p><font size="2" face="Arial">Após remover os registros usando
+uma consulta exclusão, você não poderá desfazer a operação.
+Se quiser saber quais arquivos foram excluídos, primeiro examine
+os resultados de uma consulta seleção que use o mesmo critério
+e então, execute a consulta exclusão. Mantenha os backups de
+seus dados. Se você excluir os registros errados, poderá
+recuperá-los a partir dos seus backups.</font></p>
+
+<p><font face="Arial">Exemplo de instrução DELETE</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo exclui todos os
+registros de funcionários cujo título seja Estagiário. Quando
+a cláusula FROM inclui apenas uma tabela, não é necessário
+indicar o nome da tabela na instrução DELETE.</font></p>
+
+<p align="center"><font size="2" face="Arial">DELETE *FROM
+Funcionários WHERE Título = 'Estagiário';</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo exclui todos os
+registros de funcionários cujo título seja Estagiário e que
+também tenham um registro na tabela
+&quot;FolhadePagamento&quot;. As tabelas
+&quot;Funcionários&quot; e &quot;FolhadePagamento&quot; têm uma
+relação um por um.</font></p>
+
+<p align="center"><font size="2" face="Arial">DELETE
+Funcionários.* FROM Funcionários INNER JOIN FolhaDePagamento </font></p>
+
+<p align="center"><font size="2" face="Arial">ON
+Funcionários.FuncionárioID = FolhadePagamento.FuncionárioID </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE
+Funcionários.Título = 'Estagiário';</font></p>
+
+<p align="center"><font size="2" face="Arial"></font>&nbsp;</p>
+
+<p><font size="5" face="Arial"><b>Subconsultas SQL</b></font></p>
+
+<p><font size="2" face="Arial">Uma subconsulta é uma instrução
+<b>SELECT </b>aninhada dentro de uma instrução <b>SELECT</b>, <b>INSERT</b>,
+<b>DELETE </b>ou <b>UPDATE </b>ou dentro de uma outra
+subconsulta. </font></p>
+
+<p><font face="Arial">Sintaxe</font></p>
+
+<p><font size="2" face="Arial">Você pode usar três formas de
+sintaxe para criar uma subconsulta:</font></p>
+
+<p><font size="2" face="Arial">comparação [ANY | ALL | SOME]
+(instruçãosql) </font></p>
+
+<p><font size="2" face="Arial">expressão [NOT] IN
+(instruçãosql)</font></p>
+
+<p><font size="2" face="Arial">[NOT] EXISTS (instruçãosql) </font></p>
+
+<p><font size="2" face="Arial">Uma subconsulta tem as partes
+abaixo:</font></p>
+
+<p><font size="2" face="Arial"><b>Parte Descrição</b></font></p>
+
+<p><font color="#800000" size="2" face="Arial">comparação</font><font
+size="2" face="Arial"> Uma expressão e um operador de
+comparação que compara a expressão com o resultado da
+subconsulta.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">expressão</font><font
+size="2" face="Arial"> Uma expressão para a qual o resultado
+definido da subconsulta é procurado.</font></p>
+
+<p><font color="#800000" size="2" face="Arial">instruçãosqlt</font><font
+size="2" face="Arial"> Uma instrução SELECT de acordo com as
+mesmas regras e formato de qualquer outra instrução SELECT. Ela
+deve estar entre parênteses.</font></p>
+
+<p><font face="Arial">Comentários</font></p>
+
+<p><font size="2" face="Arial">Você pode usar uma subconsulta em
+vez de uma expressão na lista de campo de uma instrução SELECT
+ou em uma cláusula WHERE ou HAVING. Em uma subconsulta, você
+usa uma instrução SELECT para fornecer um conjunto de um ou
+mais valores específicos para avaliar as expressões das
+cláusulas WHERE ou HAVING.</font></p>
+
+<p><font size="2" face="Arial">Use o predicado ANY ou SOME, que
+são sinônimos, para recuperar registros na consulta principal
+que satisfaçam a comparação com quaisquer registros
+recuperados na subconsulta. O exemplo abaixo retorna todos os
+produtos cujo preço unitário é maior que o preço de qualquer
+produto vendido com um desconto de 25 por cento ou mais: </font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT * FROM
+Produtos WHERE PreçoUnit &gt; ANY</font></p>
+
+<p align="center"><font size="2" face="Arial">(SELECT PreçoUnit
+FROM PedidoDetalhes WHERE Desconto &gt;= .25);</font></p>
+
+<p><font size="2" face="Arial">Use o predicado ALL para recuperar
+apenas os registros na consulta principal que satisfaçam a
+comparação com todos os registros recuperados na subconsulta.
+Se você mudou ANY para ALL no exemplo acima, a consulta
+retornaria apenas os produtos cujo preço unitário fosse maior
+que o de todos os produtos vendidos com um desconto de 25 por
+cento ou mais. Isto é muito mais restritivo. </font></p>
+
+<p><font size="2" face="Arial">Use o predicado IN para recuperar
+apenas os registros na consulta principal para os quais alguns
+registros na subconsulta contêm um valor igual. O exemplo abaixo
+retorna todos os produtos com um desconto de 25 por cento ou
+mais: </font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT * FROM
+Produtos WHERE ProdutoID IN</font></p>
+
+<p align="center"><font size="2" face="Arial">(SELECT ProdutoID
+FROM PedidoDetalhes WHERE Desconto &gt;= .25);</font></p>
+
+<p><font size="2" face="Arial">De maneira contrária, você pode
+usar NOT IN para recuperar apenas os registros na consulta
+principal para os quais não existam registros com valores iguais
+na subconsulta. Utilize o predicado EXISTS (com a palavra
+reservada NOT opcionalmente) em comparações true/false para
+determinar se a subconsulta retorna algum registro.</font></p>
+
+<p><font size="2" face="Arial">Você também pode usar aliases de
+nomes de tabelas em uma subconsulta para fazer referência a
+tabelas listadas em uma cláusula FROM fora da subconsulta. O
+exemplo abaixo retorna os nomes dos funcionários cujos salários
+sejam iguais ou superiores à média de salários de todos os
+funcionários na mesma função. Para a tabela Funcionários é
+dada o alias &quot;T1&quot;:</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Nome, Título, Salário FROM Funcionários AS T1</font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE Salário
+&gt;= (SELECT Avg(Salário)</font></p>
+
+<p align="center"><font size="2" face="Arial">FROM Funcionários
+WHERE T1. T1.Título = Funcionários.Título) Order by Title;</font></p>
+
+<p><font size="2" face="Arial">No exemplo acima, a palavra
+reservada AS é opcional. Algumas subconsultas são aceitas em
+consultas de tabela cruzada especialmente como predicados (as da
+cláusula WHERE). Subconsultas como saída (as da lista SELECT)
+não são aceitas em tabelas de referência cruzada.</font></p>
+
+<p><font face="Arial">Exemplos de subconsultas SQL</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo lista o nome, título
+e salário de todos os representantes de vendas cujos salários
+sejam superiores aos de todos os gerentes e diretores.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Nome, Título, Salário FROM Funcionários </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE Título LIKE
+&quot;*Repr Vendas*&quot; AND Salário &gt; ALL </font></p>
+
+<p align="center"><font size="2" face="Arial">(SELECT Salário
+FROM Funcionários WHERE (Título LIKE &quot;*Gerente*&quot;) </font></p>
+
+<p align="center"><font size="2" face="Arial">OR (Título LIKE
+&quot;*Diretor*&quot;));</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo lista o nome e preço
+unitário de todos os produtos cujo preço unitário seja igual
+ao do Licor de Cacau.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT NomeProduto,
+PreçoUnit FROM Produtos </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE PreçoUnit =
+(SELECT PreçoUnit FROM [Produtos] </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE NomeProduto =
+&quot;Licor de Cacau&quot;);</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo lista a empresa e o
+contato de cada empresa de todos os clientes que fizeram pedidos
+no segundo trimestre de 1995.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT NomeContato,
+NomeEmpresa, ContatoTítulo, Fone FROM Clientes </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE ClienteID IN
+(SELECT ClienteID FROM Pedidos </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE DataPedido
+BETWEEN #1/04/95# AND #1/07/95#);</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo lista os
+funcionários cujo salário seja maior que a média dos salários
+de todos os funcionários.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Sobrenome,
+Nome, Título, Salário FROM Funcionários T1 </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE Salário
+&gt;= (SELECT AVG(Salário) FROM Funcionários </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE
+Funcionários.Título = T1.Título) ORDER BY Título;</font></p>
+
+<p><font size="2" face="Arial">Esse exemplo seleciona o nome de
+todos os funcionários que tenham registrado pelo menos um
+pedido. Isto também poderia ser feito com INNER JOIN.</font></p>
+
+<p align="center"><font size="2" face="Arial">SELECT Nome,
+Sobrenome FROM Funcionários AS E </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE EXISTS
+(SELECT * FROM Pedidos AS O </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE
+O.FuncionárioID = E.FuncionárioID);</font></p>
+
+<p><font size="2" face="Arial">Altera o campo Efetuado do arquivo
+de serviços para 2 caso o mesmo tenha parecer técnico da
+entidade encaminhanhamento diferente de nulo.</font></p>
+
+<p align="center"><font size="2" face="Arial">UPDATE servico SET
+efetuado = 2 </font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE
+numero_servico = ANY (SELECT servico.numero_servico </font></p>
+
+<p align="center"><font size="2" face="Arial">FROM servico INNER
+JOIN encaminhamento </font></p>
+
+<p align="center"><font size="2" face="Arial">ON
+(servico.numero_servico = encaminhamento. numero_servico) </font></p>
+
+<p align="center"><font size="2" face="Arial">AND (servico.
+ano_servico = encaminhamento.ano_servico)</font></p>
+
+<p align="center"><font size="2" face="Arial">WHERE
+(((servico.efetuado) Is Null) AND
+((encaminhamento.parecer_tecnico) Is Not Null))</font></p>
+
+<p align="center"><font size="2" face="Arial">GROUP BY
+servico.numero_servico ORDER BY servico.numero_servico);</font></p>
+</body>
+</html>
