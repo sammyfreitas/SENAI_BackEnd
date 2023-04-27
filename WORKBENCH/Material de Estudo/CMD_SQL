@@ -1,0 +1,38 @@
+--SQL SCRIPTS*/
+
+--CRIANDO BANCO DE DADOS*/
+create database bd_teste;
+
+--CRIANDO TABELAS*/
+create table <nome_tabela>(
+	cpf varchar (11),
+	nome  varchar (100),
+	endereco varchar (500),
+	cidade varchar (150),
+	pais varchar (150),
+	cep varchar (9),
+	salario float (
+	...
+	);
+	
+--DELETANDO TABELAS*/
+drop table tbClientes;
+
+--INSERINDO DADOS NA TABELA*/
+insert into tbClientes(cpf,nome) values ('125789463','Joao');
+
+--Sintaxe básica Delete*/
+delete *
+from tbClientes
+where critério
+
+--Sintaxe básica Consulta*/
+select [distinct] expressao [as nome-atributo]
+[from lista]
+[where condicao]
+[order by attr_name1 [ASC | DESC ]]
+--onde: DISTINCT: Elimina linhas duplicadas na seleção*/
+
+--Sintaxe básica Consulta*/
+select count(*) from funcionarios;
+select * from cidadao order by nome DESC;

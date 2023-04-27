@@ -1,0 +1,22 @@
+#SQL SCRIPTS
+
+#CRIANDO BANCO DE DADOS
+create database 'nome do banco';
+
+#CRIANDO TABELAS
+create table tbClientes(
+	cpf varchar (11),
+	nome  varchar (100),
+	...
+	);
+	
+#DELETANDO TABELAS
+drop table tbClientes;
+
+#INSERINDO DADOS NA TABELA
+insert into tbClientes(
+	cpf 
+	
+	
+	);
+
