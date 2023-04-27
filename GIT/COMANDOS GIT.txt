@@ -1,0 +1,32 @@
+GIT
+
+- Abrir o Git Bash
+
+- ls 						Listar as pastas e arquivos do diretório
+- cd						Change Directory - transitar entre os diretórios
+- git init					Para iniciar o diretório
+- git status				Para saber se o comando foi bem executado
+= git add .					Para adicionar todos os arquivos e pastas do diretório
+- git commit -m "mensagem primeiro commit"	
+							Para colocar mensagem no commit
+- git remote add origin <url>
+		https://github.com/sammyfreitas/SENAI_BackEnd
+- git push origin master
+
+git remote rm origin
+
+
+
+…or create a new repository on the command line
+echo "# SENAI_BackEnd" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/sammyfreitas/SENAI_BackEnd.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/sammyfreitas/SENAI_BackEnd.git
+git branch -M main
+git push -u origin main
