@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/strict.dtd">
+<html xmlns="http://www.w3.org/TR/xhtml1">
+<head><title>TAASC: MySQL Basics</title>
+<meta name="author" content="The Analysis and Solutions Company">
+<meta name="description" content="Tips for installing MySQL on Windows NT machines. Also provides step by step instructions on creating and maintaining MySQL databases using basic SQL commands.">
+<meta name="keywords" content="MySQL, tutorial, help, tips, instructions">
+</head>
+<body bgcolor="#006600" text="FFFFFF" link="#99FF00" vlink="#CCCC99" alink="#CC0000">
+<table width="100%" summary="For layout only. Left cell has logo. Right cell has navigation buttons.">
+<tr>
+<td><a href="http://www.analysisandsolutions.com/"><img src="../graphics/logosm.gif" border="0" alt="Logo: The Analysis and Solutions Company" /></a></td>
+<td align="right" valign="top"><small>
+<a href="../code/">Computer Code and Tutorials</a>
+<br /><a href="../examples/">Project Examples</a>
+<br /><a href="../research/">Research</a>
+</small></td>
+</tr></table>
+<h1>MySQL Basics</h1>
+<h2>Introduction</h2>
+<p>Welcome. These instructions provide new <a href="http://www.mysql.com/">MySQL</a>
+users with <em>very basic</em>, step by step, instructions on how to get started.</p>
+
+<p>MySQL runs under a broad array of operating systems. The MySQL commands discussed here apply to all platforms.
+The installation instructions in particular are guaranteed to work if the following conditions are true:</p>
+<ul>
+<li>You're using Windows NT 4.0 machine and MySQL's Windows executables. I've been told these instructions also work for Windows 2000.</li>
+<li>MySQL is installed on the <code>c:</code> drive in the <code>mysql</code> directory.</li>
+<li>MySQL is set to use English.</li>
+</ul>
+<p>If your conditions are different, the instructions should still work, but
+keep an eye out for slight differences, like which working directory you'll need to be in.</p>
+
+<p>The commands you need to type are displayed in the <code><b>bold fixed width
+font</b></code>. Resulting screen text is shown here in <code>standard fixed width font</code>.</p>
+
+&nbsp;<h2>Contents</h2>
+<ul>
+<li><a href="#installation">Windows 2000 and NT 4.0 Installation</a></li>
+<li><a href="#otherwin">Quick Tips for Other Windows Operating Systems</a></li>
+<li><a href="#creating">Creating a Simple Database and Displaying its Structure</a></li>
+<li><a href="#putting">Putting Data into a Table</a></li>
+<li><a href="#adding">Adding Fields</a></li>
+<li><a href="#multiple">Multi-line Command Entry</a></li>
+<li><a href="#insert">Insert Some More Records into the Table</a></li>
+<li><a href="#updating">Updating Existing Records</a></li>
+<li><a href="#deleting">Deleting Records</a></li>
+<li><a href="#time">Time to Call it Quits</a></li>
+<li><a href="#in">In Closing</a></li>
+<li><a href="#bug">Don't Bug Us!</a></li>
+</ul>
+
+&nbsp;<a name="installation"><h2>Windows 2000 and NT 4.0 Installation</h2></a>
+<blockquote>
+If you don't already have MySQL on your system, you'll need to start by getting and installing it.
+<ol>
+<li><a href="http://www.mysql.com/download_win.html">Download MySQL-Win32</a> version of the program.</li> 
+<li>Open up Windows Explorer.</li>
+<li>Find the downloaded file and copy it into a temporary directory.</li>
+<li>Double click on the file. At this point, if you have a zip utility, it
+should start.  If you don't have a program to unzip files, you'll need to
+get one.  I'm partial to <a href="http://www.pkware.com">PKZIP for Windows</a>.</li>
+<li>Once the files are extracted, go back into Explorer and double click on Setup.exe.</li>
+<li>Open up a MS-DOS Prompt window. The default location for starting such windows is: Start Menu | Programs | MS-DOS Prompt.</li>
+<li>Switch to the c: drive if you're not already there: <code>F:\&gt;<b>c:</b></code></li>
+<li>Switch into the MySQL working directory: <code>C:\&gt;<b>cd mysql\bin</b></code></li>
+<li>Load the MySQL daemon: <code>c:\mysql\bin\<b>mysqld --install</b></code>. If that doesn't work, it may be because the program <code>mysqld-shareware.exe</code> needs to be renamed <code>mysqld.exe.</code></li>
+<li>Close the DOS Prompt window: <code>c:\mysql\bin\<b>exit</b></code></li>
+<li>Open up the Services Manager by selecting: Start Menu | Settings | Control Panel | Services.</li>
+<li>Highlight the line with &quot;MySql&quot; on it.</li>
+<li>If the &quot;Startup&quot; column says &quot;Manual&quot; or &quot;Disabled, click on the &quot;Startup&quot; button, hit the &quot;Automatic&quot; radio button and click OK.</li>
+<li>Click on the Startup button.</li>
+<li>Close the Services Manager and the Control Panel.</li>
+</ol>
+</blockquote>
+
+&nbsp;<a name="otherwin"><h2>Quick Tips for Other Windows Operating Systems</h2></a>
+<blockquote>
+<p>If you're using Windows 95 or 98, do <em>not</em> run <code>mysqld --install</code>. These
+operaing systems don't have the ability to host a &quot;service.&quot; So, you need to run MySQL as
+a standalone application by executing the command <code>mysqld --standalone</code>.</p>
+<p>I haven't run MySQL on these systems myself, so, for more information,
+check out the <a href="http://marc.theaimsgroup.com/?l=mysql&w=2&r=1&s=install+win98&q=b">MySQL Mailing List Archive</a>.</p>
+</blockquote>
+
+&nbsp;<a name="creating"><h2>Creating a Simple Database and Displaying its Structure</h2></a>
+<blockquote>
+<h3>Open up a MS-DOS Prompt window</h3>
+The default location for starting such windows is: Start Menu | Programs | MS-DOS Prompt.
+<h3>Get to the working directory</h3>
+<pre>F:\&gt;<b>c:</b>
+C:\&gt;<b>cd mysql\bin</b>
+
+</pre>
+
+<h3>Instruct MySQL to setup a new database</h3>
+<p>All this really does is create a new subdirectory in your c:\mysql\data directory.</p>
+
+<pre>C:\mysql\bin&gt;<b>mysqladmin create database01</b>
+Database "database01" created.
+
+</pre>
+
+<h3>Startup MySQL</h3>
+<pre>C:\mysql\bin><b>mysql</b>
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 22 to server version: 3.21.29a-gamma-debug
+
+Type 'help' for help.
+
+</pre>
+
+<h3>Open the database</h3>
+<pre>mysql&gt; <b>use database01</b>
+Database changed
+
+</pre>
+
+<h3>Create a table</h3>
+<pre>mysql&gt; <b>create table table01 (field01 integer,field02 char(10));</b>
+Query OK, 0 rows affected (0.00 sec)
+</pre>
+
+<p><img src="../graphics/excl.gif" alt="!" align="top" />Enclose entire list of field names between one pair of parentheses.
+<br /><img src="../graphics/excl.gif" alt="!" align="top" />Commas are used between each field.
+<br /><img src="../graphics/info.gif" alt="i" align="top" />A space may be used after the comma between fields.
+<br /><img src="../graphics/excl.gif" alt="!" align="top" />A comma is <em>not</em> used after last field.
+<br /><img src="../graphics/excl.gif" alt="!" align="top" />This, and all SQL statements, are concluded by a semicolon &quot;<code><b>;</b></code>&quot;.</p>
+
+<h3>List the tables</h3>
+<pre>mysql&gt; <b>show tables;</b>
++----------------------+
+| Tables in database01 |
++----------------------+
+| table01              |
+| table02              |
++----------------------+
+
+</pre>
+
+<h3>List the 	fields in a table</h3>
+<pre>mysql&gt; <b>show columns from table01;</b>
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| field01 | int(11)  | YES  |     |         |       |
+| field02 | char(10) | YES  |     |         |       |
++---------+----------+------+-----+---------+-------+
+
+
+
+</pre>
+<p>Congratulations! Pretty straightforward, eh?</p>
+</blockquote>
+
+
+
+&nbsp;<a name="putting"><h2>Putting Data into a Table</h2></a>
+<blockquote>
+
+<h3>Insert a record</h3>
+<pre>mysql&gt; <b>insert into table01 (field01,field02) values (1,'first');</b>
+Query OK, 1 row affected (0.00 sec)
+</pre>
+
+<p><img src="../graphics/excl.gif" alt="!" align="top" />Enclose entire list of field names between one pair of parentheses.
+<br /><img src="../graphics/excl.gif" alt="!" align="top" />Enclose the values to be inserted between <em>another</em> pair of parentheses.
+<br /><img src="../graphics/excl.gif" alt="!" align="top" />Commas are used between each field and between each value.
+<br /><img src="../graphics/info.gif" alt="i" align="top" />A space may be used after the comma between fields.</p>
+
+
+<h3>List all the records in a table</h3>
+<pre>mysql&gt; <b>select * from table01;</b>
++---------+---------+
+| field01 | field02 |
++---------+---------+
+|       1 | first   |
++---------+---------+
+
+
+</pre>
+<p>Excellent!</p>
+</blockquote>
+
+
+&nbsp;<a name="adding"><h2>Adding Fields</h2></a>
+<blockquote>
+<h3>...one field at a time</h3>
+<pre>mysql&gt; <b>alter table table01 add column field03 char(20);</b>
+Query OK, 1 row affected (0.04 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+</pre>
+
+<h3>...more than one at a time</h3>
+<pre>mysql&gt; <b>alter table table01 add column field04 date,add column field05 time;</b>
+Query OK, 1 row affected (0.04 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+</pre>
+<p><img src="../graphics/excl.gif" alt="!" align="top" />The &quot;add column&quot; must be restated for each column.
+<br /><img src="../graphics/excl.gif" alt="!" align="top" />Commas are used between each add column statement.
+<br /><img src="../graphics/info.gif" alt="i" align="top" />A space may be used after these commas.</p>
+<p><img src="../graphics/info.gif" alt="i" align="top" />The MySQL Manual fully explains each possible <a href="http://www.mysql.com/Manual/manual.html#Column types">column data type</a>.</p>
+
+<h3>Did it work?</h3>
+<pre>mysql&gt; <b>select * from table01;</b>
++---------+---------+---------+---------+---------+
+| field01 | field02 | field03 | field04 | field05 |
++---------+---------+---------+---------+---------+
+|       1 | first   | NULL    | NULL    | NULL    |
++---------+---------+---------+---------+---------+
+
+
+</pre>
+Now we're getting somewhere!
+</blockquote>
+
+
+&nbsp;<a name="multiple"><h2>Multi-line Command Entry</h2></a>
+<blockquote>
+<p>The MySQL command line interface allows you to put a statement on one line or spread it across
+multiple lines. There's no difference in syntax between the two. Using multiple lines allows you to
+break down the SQL statement into steps you may more easily comprehend.</p>
+
+<p>In multiple line mode, the interpreter appends each line to the prior lines. This continues
+until you enter a semicolon &quot;<code><b>;</b></code>&quot; to close out the SQL statement.
+Once the semicolon is typed in and you hit enter, the statement is executed.</p>
+
+<p>Here's an example of the same exact SQL statement entered both ways:
+<table cellpadding="5" border="3">
+<tr><th>Single Line Entry</th></tr>
+<tr><td>
+<pre>mysql&gt <b>create table table33 (field01 integer,field02 char(30));</b></pre>
+</td></tr>
+<tr><th>Multiple Line Entry</th></tr>
+<tr><td>
+<pre>mysql&gt <b>create table table33</b>
+    -&gt <b>(field01</b>
+    -&gt <b>integer,</b>
+    -&gt <b>field02</b>
+    -&gt <b>char(30));</b></pre>
+</td></tr>
+</table></p>
+
+<p><img src="../graphics/excl.gif" alt="!" align="top" />Don't break up words:
+<table cellpadding="5" border="3">
+<tr><th>Valid</th><th>Invalid</th></tr>
+<tr><td>
+<pre>mysql&gt <b>create table table33</b>
+    -&gt <b>(field01</b>
+    -&gt <b>integer,</b>
+    -&gt <b>field02</b>
+    -&gt <b>char(30));</b></pre>
+</td><td>
+<pre>mysql&gt <b>create table table33</b>
+    -&gt <b>(field01 <u>inte</u></b>
+    -&gt <b><u>ger,</u></b>
+    -&gt <b>field02</b>
+    -&gt <b>char(30));</b></pre>
+</td></tr>
+</table></p>
+
+<p><img src="../graphics/excl.gif" alt="!" align="top" />When inserting or
+updating records, do not spread a field's string across multiple lines, otherwise
+the hard returns are stored in the record:
+<table cellpadding="5" border="3">
+<tr><th>Standard Operation</th><th>Hard Return Stored in Record</th></tr>
+<tr><td valign="top"><pre>mysql&gt; <b>insert into table33 (field02)</b>
+    -&gt; <b>values</b>
+    -&gt; <b>('who thought of foo?');</b></pre>
+</td><td>
+<pre>mysql&gt; <b>insert into table33 (field02)</b>
+    -&gt; <b>values</b>
+    -&gt; <b>('who thought</b>
+    -&gt; <b>of foo?');</b></pre>
+</td></tr>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr><th colspan="2">Results</th></tr>
+<tr><td colspan="2" align="center">
+<pre>mysql&gt; <b>select * from table33;</b>
+   +---------+---------------------+
+   | field01 | field02             |
+   +---------+---------------------+
+   |    NULL | who thought of foo? |
+   |    NULL | who thought          
+   of foo? |                        
+   +---------+---------------------+
+</pre>
+</td></tr>
+</table></p>
+</blockquote>
+
+&nbsp;<a name="insert"><h2>Insert Some More Records into the Table</h2></a>
+<blockquote>
+
+<h3>Add this record</h3>
+<pre>mysql&gt; <b>insert into table01 (field01,field02,field03,field04,field05) values</b>
+    -&gt; <b>(2,'second','another','1999-10-23','10:30:00');</b>
+Query OK, 1 row affected (0.00 sec)
+</pre>
+
+<p><img src="../graphics/excl.gif" alt="!" align="top" />Quotes must go around text values.</p>
+<p><img src="../graphics/info.gif" alt="i" align="top" />Standard date format is &quot;yyyy-mm-dd&quot;.
+<br /><img src="../graphics/info.gif" alt="i" align="top" />Standard time format is &quot;hh:mm:ss&quot;.
+<br /><img src="../graphics/excl.gif" alt="!" align="top" />Quotes are required around the standard date and time formats, noted above.
+<br /><img src="../graphics/info.gif" alt="i" align="top" />Dates may also be entered as &quot;yyyymmdd&quot; and times as &quot;hhmmss&quot;.
+If entered in this format, values don't need to be quoted.</p>
+
+<p><img src="../graphics/info.gif" alt="i" align="top" />Numeric values do
+<em>not</em> need to be quoted. This holds true regardless of the data type
+a column is formatted to contain (e.g. text, date, time, integer).</p>
+
+<p><img src="../graphics/info.gif" alt="i" align="top" />MySQL has a useful command
+buffer.  The buffer stores the SQL statements you've entered thus far. Using it keeps you from having
+to retype the same commands over and over. Let's use this next step as an example.</p>
+
+<h3>Add another record using the command buffer (and optional date and time formats)</h3>
+<p><ol>
+<li>Hit the up arrow key twice.</li>
+<li>Hit the ENTER key.</li>
+<li>Type in the new values between a pair parentheses and stick a closing semicolon on the end.
+<br /><code><b>(3,'a third','more foo for you',19991024,103004);</b></code></li>
+<li>Hit the ENTER key.</li>
+</ol></p>
+<p>Voilà!</p>
+
+<h3>Is it in there?</h3>
+<pre>mysql&gt; <b>select * from table01;</b>
++---------+-----------+------------------+------------+----------+
+| field01 | field02   | field03          | field04    | field05  |
++---------+-----------+------------------+------------+----------+
+|       1 | first     | NULL             | NULL       | NULL     |
+|       2 | second    | another          | 1999-10-23 | 10:30:00 |
+|       3 | a third   | more foo for you | 1999-10-24 | 10:30:01 |
++---------+-----------+------------------+------------+----------+
+
+
+</pre>
+<p>It's in there!</p>
+<p>Now, we're almost done...</p>
+</blockquote>
+
+
+
+&nbsp;<a name="updating"><h2>Updating Existing Records</h2></a>
+<blockquote>
+<h3>Modify one field at a time</h3>
+<p><img src="../graphics/excl.gif" alt="!" align="top" />Again, be careful with syntax.
+Quote marks need to go around text but not around numbers.</p>
+<pre>mysql&gt; <b>update table01 set field03='new info' where field01=1;</b>
+Query OK, 1 row affected (0.00 sec)
+
+</pre>
+
+<h3>Change multiple fields at once</h3>
+<p><img src="../graphics/excl.gif" alt="!" align="top" />Remember to put commas between each field you're updating.</p>
+<pre>mysql&gt; <b>update table01 set field04=19991022, field05=062218 where field01=1;</b>
+Query OK, 1 row affected (0.00 sec)
+
+</pre>
+
+<h3>So, what's up with our data?</h3>
+<pre>mysql&gt; <b>select * from table01;</b>
++---------+-----------+------------------+------------+----------+
+| field01 | field02   | field03          | field04    | field05  |
++---------+-----------+------------------+------------+----------+
+|       1 | first     | new info         | 1999-10-22 | 06:22:18 |
+|       2 | second    | another          | 1999-10-23 | 10:30:00 |
+|       3 | third one | more foo for you | 1999-10-24 | 10:30:01 |
++---------+-----------+------------------+------------+----------+
+
+</pre>
+
+<h3>Update multiple records in one stroke</h3>
+<pre>mysql&gt; <b>update table01 set field05=152901 where field04>19990101;</b>
+Query OK, 3 rows affected (0.00 sec)
+
+</pre>
+
+<h3>Survey says...</h3>
+<pre>mysql&gt; <b>select * from table01;</b>
++---------+-----------+------------------+------------+----------+
+| field01 | field02   | field03          | field04    | field05  |
++---------+-----------+------------------+------------+----------+
+|       1 | first     | new info         | 1999-10-22 | 15:29:01 |
+|       2 | second    | another          | 1999-10-23 | 15:29:01 |
+|       3 | third one | more foo for you | 1999-10-24 | 15:29:01 |
++---------+-----------+------------------+------------+----------+
+
+</pre>
+<p>Wee haw!</p>
+</blockquote>
+
+
+&nbsp;<a name="deleting"><h2>Deleting Records</h2></a>
+<blockquote>
+<h3>The delete command</h3>
+<pre>mysql&gt; <b>delete from table01 where field01=3;</b>
+Query OK, 1 row affected (0.01 sec)
+</pre>
+
+<pre>mysql&gt; <b>select * from table01;</b>
++---------+---------+----------+------------+----------+
+| field01 | field02 | field03  | field04    | field05  |
++---------+---------+----------+------------+----------+
+|       1 | first   | new info | 1999-10-22 | 15:29:01 |
+|       2 | second  | another  | 1999-10-23 | 15:29:01 |
++---------+---------+----------+------------+----------+
+
+
+</pre>
+</blockquote>
+
+<a name="time"><h2>Time to Call it Quits</h2></a>
+<pre>mysql&gt; <b>quit</b>
+Bye
+
+
+</pre>
+
+&nbsp;<a name="in"><h2>In Closing</h2></a>
+<blockquote><p>Now you know some rudimentary commands for running a database in MySQL. Since MySQL is operated
+by executing SQL calls, you have a broad array of very powerful tools at your disposal.
+For instance, you're able to display data from several tables at once by joining related fields.
+
+<table border align="right" width="25%">
+<tr><td align="center">
+<small>advertisement
+<br /><img src="http://images.amazon.com/images/P/0735709211.01.LZZZZZZZ.jpg" alt="Cover Art" width="100" />
+<br /><cite>MySQL</cite>, by Paul DuBois, has received excellent reviews.
+He's a consistent contributor to the MySQL mailing list.
+Please purchase his book through these links
+to help defray our costs incurred providing this important page:
+<br /><a href="http://www.amazon.de/exec/obidos/ASIN/0735709211/theanalsoluco0b">Deutschland</a>
+<br /><a href="http://www.amazon.com/exec/obidos/ASIN/0735709211/theanalsoluco">United States</a>
+<br />Please throw it in your shopping cart first, then shop around. If you later decide you don't want it, then take it out.
+<br />Thanks!
+</small>
+</td></tr>
+</table>
+
+Similarly, SQL permits complex displays, updates or deletions of multiple records which fit
+specific criteria. So, your next step toward mastery is learning all about SQL.</p>
+
+<p>James Hoffman has put a tutorial page up on the web entitled <a href="http://w3.one.net/~jhoffman/sqltut.htm"><cite>Introduction to Structured Query Language</cite></a>.
+The <a href="http://www.mysql.com/Manual/manual.html#General-SQL">General SQL Information</a> of the
+MySQL Manual lists books recommended by many members of their mailing list.</p>
+<p>Another thing to note is MySQL offers good security features you'll need to use when operating on networks.</p>
+
+<p><form action="http://www.deja.com/[ST_rn=ps]/qs.xp" method=get>To
+learn more about MySQL and how to use it, <a href="http://www.mysql.com/Manual/">the manual</a> should be your first stop.
+Also, Paul DuBois' book, <cite>MySQL</cite>, comes highly recommended. Buy it on line now using the links in the box on the right.
+The MySQL Mailing List is a <em>tremendous</em> resource. Deja News' Power Search is helpful for weeding through the tons of messages.
+This input box gives you a jump start:
+<br /><input type="text" name="QRY" size="30" value=""></input>
+<input type="hidden" name="ST" value="PS"></input>
+<input type="hidden" name="svcclass" value="dnyr"></input>
+<input type="hidden" name="defaultOp" value="AND"></input>
+<input type="hidden" name="DBS" value="1"></input>
+<input type="hidden" name="OP" value="dnquery.xp"></input>
+<input type="hidden" name="LNG" value="ALL"></input>
+<input type="hidden" name="subjects" value=""></input>
+<input type="hidden" name="groups" value="mailing.database.mysql"></input>
+<input type="hidden" name="authors" value=""></input>
+<input type="hidden" name="fromdate" value=""></input>
+<input type="hidden" name="todate" value=""></input>
+<input type="hidden" name="showsort" value="score"></input>
+<input type="hidden" name="maxhits" value="100"></input>
+<input type="submit" value="Search"></input>
+</form>
+If you don't find what you're looking for there, or can't stand the massive graphics and advertising,
+use <a href="http://marc.theaimsgroup.com/?l=mysql&r=1&w=2">mailing list archive on MARC</a>.
+</p>
+</blockquote>
+
+<br clear"all" />&nbsp;<a name="bug"><h2>Don't Bug Us!</h2></a>
+<blockquote>
+<p>Folks, please read this disclaimer:</p>
+<ol>
+<li>We are <em>not</em> the company that makes MySQL. It's made by <a href="http://www.tcx.se/">TcX</a>.</li>
+<li>We are <em>not</em> on the development team.</li>
+<li>We put this page up here to help people. It gets over 600 hits per day. That's <em>a lot</em> of help.</li>
+<li>We are unable to respond to inquiries seeking more free help.</li>
+</ol>
+<p>Of course, if you're interested in hiring our firm, we'll be glad to hear from you.</p>
+
+</blockquote>
+
+&nbsp;<hr /><center><address>
+The&nbsp;Analysis&nbsp;and&nbsp;Solutions&nbsp;Company.&nbsp;&nbsp;&nbsp;&nbsp;More&nbsp;than&nbsp;just&nbsp;answers.&nbsp;Solutions.&nbsp;<sup>sm</sup>
+<br /><hr width="60%" /><small><b><blink>Stop!</blink>
+<br />Before contacting us,<br />please read the disclaimer above.</b>
+<hr width="10%" />v: 718-854-0335<br />f: 718-854-0409
+<br />w: <a href="http://www.analysisandsolutions.com/">www.analysisandsolutions.com</a>
+<br />e: <a href="mailto:info@analysisandsolutions.com">info@analysisandsolutions.com</a>
+<br />m: 4015 7 Av #4AJ, &nbsp;Brooklyn NY &nbsp;11232
+<hr width="10%" /><b>Unfortunately, we are unable to respond to inquiries
+<br />seeking pro bono assistance on this matter.
+<br />Thank you for understanding.</b>
+<hr width="60%" />If you are having problems printing this page, please read our <a href="../printing.htm">Printing FAQ</a>.
+<br /><hr width="60%" />
+This URL: <a href="http://www.analysisandsolutions.com/code/mybasic.htm">http://www.analysisandsolutions.com/code/mybasic.htm</a>
+<br />Last modified: 30 May 2000, 2:21 pm EDT
+<br />&copy; 2000</small></address></center></body></html>
