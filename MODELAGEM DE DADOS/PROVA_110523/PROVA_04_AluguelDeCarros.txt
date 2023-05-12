@@ -1,0 +1,128 @@
+Sistema de Aluguel de Automóveis
+
+Só pode ser usado com cadastro prévio
+- Cliente Cria Cadastro
+- Cliente Create Pedido de Aluguel	(Cria)
+- Cliente Read Pedido de Aluguel	(Consulta)
+- Cliente Change Pedido de Aluguel 	(Altera)
+- Cliente Delete Pedido de Aluguel 	(Cancela)
+
+
+Agentes
+- Empresa Modifica Pedido
+- Banco Avalia Pedido
+
+Agente analisa pedido
+	caso aprove: executa contrato
+	
+Cliente:
+	RG, 
+	CPF, 
+	Nome, 
+	Endereço 
+	Profissão
+	EntidadesEmpregadora
+	Rendimentos
+	EntidadesEmpregadora2
+	Rendimentos2
+	EntidadesEmpregadora3
+	Rendimentos3
+	TipoDeContrato
+	
+Contrato:
+	TipoPropriedade (Cliente, Empresa, Banco)
+	IDVeiculo
+	TipoAluguel
+	
+Veiculo:
+	IdVeiculo
+	Matricula
+	Ano
+	Marca
+	Modelo
+	Placa
+	
+	
+	
+	
+	+--------------------------------+
+|   Sistema de Aluguel de Autos  |
++--------------------------------+
+|  Registrar Cliente             |
+|  Modificar Cliente             |
+|  Consultar Cliente             |
+|  Cancelar Pedido               |
+|  Modificar Pedido              |
+|  Consultar Pedido              |
+|  Avaliar Pedido                |
+|  Executar Contrato             |
+|  Registrar Automóvel           |
+|  Modificar Automóvel           |
+|  Consultar Automóvel           |
+|  Registrar Contrato de Crédito |
++--------------------------------+
+
++----------------------------------+
+|        Sistema de Aluguel        |
++----------------------------------+
+|     Casos de Uso Principais      |
++----------------------------------+
+| - Cadastro de Usuário            |
+| - Introduzir Pedido de Aluguel   |
+| - Modificar Pedido de Aluguel    |
+| - Cancelar Pedido de Aluguel     |
+| - Analisar Pedido de Aluguel     |
+| - Executar Contrato de Aluguel   |
+| - Gerenciar Dados de Contratante |
+| - Gerenciar Dados de Automóvel   |
++----------------------------------+
+
+
+
+
+
++---------------------+             +-----------------+
+|   PedidoAluguel     |<>-----------|    Contratante   |
++---------------------+             +-----------------+
+| - dataInicio         |             | - rg            |
+| - dataFim            |             | - cpf           |
+| - tipoContrato       |             | - nome          |
+| - valorContrato      |             | - endereco     |
+| - automovel          |<>----------| - profissao     |
+| - solicitante        |             | - rendimentos  |
+| - agente             |             +-----------------+
++---------------------+
+
++-------------------+             +-----------------+
+|    Automovel      |             |     Agente      |
++-------------------+             +-----------------+
+| - matricula       |             | - nome          |
+| - ano             |             | - tipoAgente    |
+| - marca           |             | - endereco     |
+| - modelo          |             | - telefone     |
+| - placa           |             | - email        |
+| - proprietario    |<>-----------| - dadosBancarios|
++-------------------+             +-----------------+
+
++-------------------+
+|     Usuario       |
++-------------------+
+| - nome            |
+| - email           |
+| - senha           |
+| - endereco        |
+| - telefone        |
+| - tipoUsuario     |
++-------------------+
+
++-------------------+
+|     Contrato      |
++-------------------+
+| - numeroContrato  |
+| - dataContrato    |
+| - valorTotal      |
+| - taxaJuros       |
+| - prazo           |
++-------------------+
+
+

@@ -1,0 +1,186 @@
+Especificação dos Requisitos
+Sistema Bancário
+A. Lançamentos diversos:
+1. O sistema deve permitir o cadastro e alteração de clientes do banco os seguintes atributos: nome, endereço (rua, número, bairro, cep), telefone, data de nascimento para pessoa física, data de fundação para pessoa jurídica, e-mail, cpf (pessoa física) e cnpj (pessoa jurídica);
+2. O sistema deve permitir o cadastro e alteração dos bancos com os seguintes atributos: código e nome;
+3. O sistema deve permitir o cadastro e alteração das agências bancárias com os seguintes atributos: número da agência, nome, endereço (rua, número, bairro, cep), telefone, e-mail. Sabe-se que um banco pode ter várias agências. Uma agência pertence apenas a um banco;
+4. O sistema deve permitir a criação de contas nos(as) bancos/agências com os seguintes atributos: número da conta e saldo. Sabe-se que um cliente pode ter várias contas e uma conta pode ter mais de um cliente como administrador
+(contas conjuntas, contas empresariais, etc).
+5. Uma agência pode ter apenas dois tipos de contas: corrente e poupança. Para diferenciá-las é utilizado apenas a adição de (\1) no final da conta corrente. Exemplo: cc 5187, cp 5187\1;
+6. O sistema deve permitir que os clientes efetuem operações de saque, depósito, transferências e agendamento (futuro) em uma conta. O sistema deve manter o registro de todas operações efetuadas pelos clientes;
+7. Os agendamentos de operações devem verificar a data do lançamento da operação para que a data informada não seja inferior à data atual;
+-----------------------------------------------------------------------
+Especificação dos Requisitos
+Sistema Bancário
+-------------
+1. Diagrama de Casos de Uso:
+-----------------------------
+
+                       +-------------------------------------+
+                       |         Sistema Bancário            |
+                       +-------------------------------------+
+                                  |              |
+                                  |              |
+                    +-------------+--------------+-------------+
+                    |             |              |             |
+           Gerenciar Bancos  Gerenciar Agências  Gerenciar Clientes
+                    |             |              |             |
+                    |             |              |             |
++-------------------+---+ +-------+------+ +-----+--------+ +-------------+
+|   Cadastrar Banco     | |   Cadastrar Agência | |  Cadastrar Cliente |
+|   Alterar Banco        | |   Alterar Agência     | |  Alterar Cliente       |
++-------------------+---+ +-------+------+ +-----+--------+ +-------------+
+                    |             |              |             |
+                    |             |              |             |
+                    +-------------+--------------+-------------+
+                                  |
+                                  |
+                         Gerenciar Contas
+                                  |
+                                  |
+                 +----------------+----------------+
+                 |                |                |
+    Abrir Conta  |     Sacar     |   Depositar    |   Transferir
+
+
+
+-----------------------------
+2. Diagrama de Classes:
+-----------------------------
+
++-------------------+   +-------------------+   +-------------------+
+|       Banco       |   |      Agência      |   |      Cliente      |
++-------------------+   +-------------------+   +-------------------+
+| codigo            |   | numAgencia        |   | nome              |
+| nome              |   | nome              |   | endereco          |
+|                   |   | endereco          |   | telefone          |
++-------------------+   | telefone          |   | email             |
+                        | email             |   | cpf/cnpj          |
+                        | tipoConta         |   | dataNascimento    |
+                        | saldo             |   +-------------------+
+                        +-------------------+
+
+Diagrama de Casos de Uso:
+
+Registrar Cliente: O usuário pode registrar um novo cliente, inserindo as informações necessárias.
+Editar Cliente: O usuário pode editar os dados de um cliente existente.
+Registrar Banco: O usuário pode registrar um novo banco, inserindo as informações necessárias.
+Editar Banco: O usuário pode editar os dados de um banco existente.
+Registrar Agência: O usuário pode registrar uma nova agência, inserindo as informações necessárias.
+Editar Agência: O usuário pode editar os dados de uma agência existente.
+Criar Conta: O usuário pode criar uma nova conta em um banco/agência, inserindo as informações necessárias.
+Efetuar Operação: O cliente pode efetuar operações em uma conta, como saque, depósito, transferência ou agendamento.
+Consultar Operações: O usuário pode consultar as operações realizadas em uma conta.
+
+Diagrama de Classes:
+
++------------------+ +----------------+ +-------------+
+| Cliente | | Banco | | Agência |
++------------------+ +----------------+ +-------------+
+| - nome: String | | - codigo: int | | - numero: int|
+| - endereco: End. | | - nome: String | | - nome: String|
+| - telefone: int | | | | - endereco: End.|
+| - email: String | +----------------+ | - telefone: int |
++------------------+ | - email: String|
++-------------+
+
++------------------+ +----------------+
+| Conta | | Operacao |
++------------------+ +----------------+
+| - numero: int | | - data: Date |
+| - saldo: float | | - valor: float |
++------------------+ | - tipo: Tipo |
+| - conta: Conta |
++----------------+
+
++--------------+ +------------+
+| End. | | Tipo |
++--------------+ +------------+
+| - rua: String| | - nome: String|
+| - numero: int| +------------+
+| - bairro: String|
+| - cep: String |
++--------------+
+
+
+
+
+Diagrama de casos de uso:
+             +---------------------+
+             |      Cliente        |
+             +---------------------+
+                       | acessa
+                       v
++-------------------------------------------------+
+|         Sistema do Banco - Gerenciar Clientes     |
++-------------------------------------------------+
+| [ ] Cadastrar Cliente                           |
+| [ ] Alterar Dados do Cliente                     |
+| [ ] Excluir Cliente                              |
+| [ ] Consultar Dados do Cliente                    |
+| [ ] Cadastrar Banco                              |
+| [ ] Alterar Dados do Banco                        |
+| [ ] Cadastrar Agência Bancária                   |
+| [ ] Alterar Dados da Agência Bancária             |
+| [ ] Cadastrar Conta Bancária                      |
+| [ ] Alterar Dados da Conta Bancária                |
+| [ ] Realizar Operações Bancárias                  |
++-------------------------------------------------+
+
+
++---------------------+        +---------------------+        +-----------------------+
+|    Cadastro Cliente |        |     Cadastro Banco   |        |  Cadastro Agência      |
++---------------------+        +---------------------+        +-----------------------+
+|+ cadastrarCliente() |        |+ cadastrarBanco()    |        |+ cadastrarAgencia()     |
+|+ alterarCliente()   |        |+ alterarBanco()      |        |+ alterarAgencia()       |
++---------------------+        +---------------------+        +-----------------------+
+
++---------------------+        +---------------------+        +-----------------------+
+|     Cadastro Conta  |        |  Operações em Contas |        |   Agendamento de Saque  |
++---------------------+        +---------------------+        +-----------------------+
+|+ criarConta()       |        |+ sacar()             |        |+ agendarSaque()         |
+|+ alterarConta()     |        |+ depositar()         |        +-----------------------+
+|+ adicionarCliente() |        |+ transferir()        |
+|+ removerCliente()   |        |+ listarOperacoes()   |
++---------------------+        +---------------------+
+
+
+
+Diagrama de classes:
+
++--------------------+     +--------------------+     +-----------------------+     +-------------------+
+|      Cliente       |     |        Banco       |     |   AgênciaBancária      |     |   ContaBancária    |
++--------------------+     +--------------------+     +-----------------------+     +-------------------+
+| - nome: string     |     | - codigo: string   |     | - numero: string       |     | - numero: string  |
+| - endereco: Endereco|     | - nome: string     |     | - nome: string         |     | - saldo: decimal  |
+| - telefone: string |     +--------------------+     | - endereco: Endereco   |     | - clientes: List<Cliente>|
+| - email: string    |                                 | - telefone: string     |     | - tipoConta: TipoConta |
+| - dataNascimento: datetime |                         | - email: string        |     +-------------------+
+| - cpf: string      |                                 | - banco: Banco         |     
+| - cnpj: string     |                                 +-----------------------+     
++--------------------+
+
++---------------------+     +-------------+
+|      Endereco       |     |   Operação  |
++---------------------+     +-------------+
+| - rua: string       |     | - data: datetime |
+| - numero: int       |     | - valor: decimal |
+| - bairro: string    |     | - tipo: TipoOperação |
+| - cep: string       |     | - conta: ContaBancária |
++---------------------+     +-------------+
+
++------------+
+| TipoConta  |
++------------+
+| - Corrente |
+| - Poupança |
++------------+
+
++---------------+
+| TipoOperação  |
++---------------+
+| - Saque       |
+| - Depósito    |
+| - Transferência |
+| - Agendamento |
++---------------+

@@ -1,0 +1,24 @@
+VENDA DE PASSAGENS AEREAS
+a.	Cliente solicita passagem:
+		local de origem 
+		local de destino
+		passagem de ida/volta
+		data partida
+		se tiver passagem de volta -> data retorno
+	
+b.	Cliente consulta passagem
+		preços 
+		horários 
+		classe
+		
+c. 	Cliente compra passagem	
+		poltrona
+		parcelas
+		forma de pagamento
+		cancela solicitação
+		confirma pagamento
+	
+	
+	
+	Venda de passagens aéreas pela internet
+	o cliente deve solicitar o local de origem, destino, e se deseja uma passagem só de ida, ou de ida e volta
