@@ -1,0 +1,43 @@
+18. MINICENÁRIO: LIGAÇÕES TELEFÓNICAS VIA MODEM
+Bruna resolveu desenvolver uma aplicação para controlar as ligações telefónicas de sua casa, a fim de checar se o valor que paga mensalmente
+está correio. Assim, sempre que desejar, poderá listar as ligações efetuadas num determinado período, contabilizando o valor a pagar.
+Para que isso seja possível, toda ligação será feita pelo computador. A
+cada solicitação de ligação, a aplicação deverá registrar: a data da ligação,
+a hora da ligação, quantidade de minutos gastos (que deve ser registrado
+no momento que a ligação for encerrada), o número de pulsos (que deve
+ser calculado pela aplicação) e o telefone para onde se discou.
+A aplicação permitirá o controle de uma agenda de telefones, com número
+do telefone e nome da pessoa de contato. O usuário poderá escolher, no
+momento da ligação, se deseja um dos registros da agenda ou se digitará
+diretamente o número do telefone,
+A forma de cálculoxJos pulsos considera os seguintes critérios:
+- A ligação ao ser completada já conta um pulso. A partir dai, a cada quatro minutos de conversação concluída, cobra-se mais um pulso.
+- Cada pulso custa R$ 0,08 para ligações locais.
+Exemplo:
+Ligação de 2m -1 pulso
+Ligação de 4m30s - 2 pulsos
+Ligação de 8m - 3 pulsos
+- Os finais de semana possuem uma promoção. Cada ligação contabiliza
+somente um pulso, independente do número de minutos de conversação.
+EXERCÍCIO:
+1. Desenhe o diagrama de casos de uso.
+2. Desenhe o diagrama de ciasses completo.
+--------------------------------------------------------------------------------
+1. Diagrama de Casos de Uso:
+-----------------------------
+O diagrama de casos de uso é uma representação visual das interações entre os usuários e o sistema. Para o cenário descrito, o diagrama de casos de uso pode incluir os seguintes casos de uso:
+
+Registrar Ligação: O usuário pode registrar uma ligação, inserindo a data, hora, quantidade de minutos gastos, número de pulsos e telefone para onde se discou.
+Listar Ligações: O usuário pode listar as ligações efetuadas em um determinado período, contabilizando o valor a pagar.
+Registrar Agenda: O usuário pode registrar um número de telefone e nome da pessoa de contato na agenda de telefones.
+Fazer Ligação: O usuário pode escolher um registro da agenda de telefones ou digitar diretamente o número do telefone para fazer uma ligação.
+-----------------------------
+2. Diagrama de Classes:
+-----------------------------
+O diagrama de classes descreve a estrutura do sistema, mostrando as classes, seus atributos e métodos, e as relações entre elas. Para o cenário descrito, o diagrama de classes pode incluir as seguintes classes:
+
+Ligação: Representa uma ligação telefônica, com os atributos data, hora, minutos gastos, número de pulsos e telefone para onde se discou. Também pode ter métodos para calcular o número de pulsos e o valor a pagar.
+Agenda: Representa a agenda de telefones, com os atributos número de telefone e nome da pessoa de contato. Pode ter métodos para adicionar, remover e buscar contatos.
+Controlador de Ligações: Gerencia as ligações registradas e fornece métodos para listar as ligações, registrar uma nova ligação e calcular o valor a pagar.
+Controlador de Agenda: Gerencia a agenda de telefones e fornece métodos para adicionar, remover e buscar contatos.
+Usuário: Representa o usuário do sistema, com o atributo nome. Pode ter métodos para fazer uma ligação e listar as ligações.

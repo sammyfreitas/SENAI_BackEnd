@@ -1,0 +1,146 @@
+MINICENÁRIO: CURSOS DE APERFEIÇOAMENTO
+A empresa AProf oferece cursos diversos de aperfeiçoamento profissional.
+O dono precisa controlar, inicialmente: os cursos oferecidos, a data de inicio e término, o horário de inicio e término, o nome e o telefone celular do
+professor e o valor da sua hora/aula.
+Para cada curso, deve-se controlar: a carga horária, o conteúdo programático e o valor do curso.
+EXERCÍCIO:
+1. Desenhe o diagrama de casos de uso.
+2. Desenhe o diagrama de classes completo.
+--------------------------------------------------------
+1. Diagrama de Casos de Uso:
+-----------------------------
+O diagrama de casos de uso é uma representação visual das interações entre os usuários e o sistema. Para o cenário descrito, o diagrama de casos de uso pode incluir os seguintes casos de uso:
+
+Registrar Curso: O administrador do sistema pode registrar um novo curso, inserindo o nome, data de início e término, horário de início e término, nome e telefone celular do professor, carga horária, conteúdo programático e valor do curso.
+Editar Curso: O administrador do sistema pode editar um curso existente, atualizando seus dados.
+Excluir Curso: O administrador do sistema pode excluir um curso existente.
+Consultar Cursos: O usuário pode consultar a lista de cursos disponíveis, com suas respectivas informações.
+Matricular-se em um Curso: O usuário pode se matricular em um curso existente, inserindo suas informações pessoais.
+
+
+
+
+
+-----------------------------
+Diagrama de Classes:
+-----------------------------
+O diagrama de classes descreve a estrutura do sistema, mostrando as classes, seus atributos e métodos, e as relações entre elas. Para o cenário descrito, o diagrama de classes pode incluir as seguintes classes:
+
+Curso: Representa um curso oferecido pela empresa, com os atributos nome, data de início e término, horário de início e término, professor, carga horária, conteúdo programático e valor do curso. Pode ter métodos para atualizar suas informações.
+Professor: Representa um professor que ministra um curso, com os atributos nome e telefone celular. Pode ter métodos para calcular o valor da hora/aula.
+Matrícula: Representa a matrícula de um aluno em um curso, com os atributos nome, telefone e curso matriculado.
+Controlador de Cursos: Gerencia os cursos oferecidos pela empresa e fornece métodos para registrar, editar e excluir cursos. Também pode fornecer métodos para listar cursos disponíveis e para matricular alunos.
+Controlador de Professores: Gerencia os professores que ministram cursos e fornece métodos para registrar e buscar professores.
+Controlador de Matrículas: Gerencia as matrículas de alunos em cursos e fornece métodos para registrar matrículas e buscar matrículas por aluno ou por curso.
+
+            +------------+          +----------------+
+            |   Curso    |          |   Professor    |
+            +------------+          +----------------+
+            | - nome     |          | - nome         |
+            | - dataInicio |          | - telefoneCel |
+            | - dataTermino |          | - valorHoraAula |
+            | - horaInicio |          
+            | - horaTermino |         +----------------+
+            | - cargaHoraria |         | Matrícula      |
+            | - conteudoProg |         +----------------+
+            | - valorCurso |           | - nome         |
+            +------------+            | - telefone    |
+                                      | - curso        |
+                                      +----------------+
+
+            +---------------------+      +---------------------+     +----------------------+
+            | ControladorCursos   |      | ControladorProfessores|     | ControladorMatrículas|
+            +---------------------+      +---------------------+     +----------------------+
+            | + registrarCurso()  |      | + registrarProfessor()|     | + registrarMatrícula()|
+            | + editarCurso()     |      | + buscarProfessor()   |     | + buscarMatrículaPorAluno()|
+            | + excluirCurso()    |                                    | + buscarMatrículaPorCurso()|
+            | + listarCursos()    |                                    | + buscarMatrículaPorId()|
+            | + matricularAluno() |
+            +---------------------+
+
+
+diagrama de classes
++----------------------------------------+
+|                 Curso                  |
++----------------------------------------+
+| - nome: string                          |
+| - dataInicio: date                      |
+| - dataTermino: date                     |
+| - horarioInicio: time                   |
+| - horarioTermino: time                  |
+| - cargaHoraria: int                      |
+| - conteudoProgramatico: string          |
+| - valorCurso: float                     |
+| - professor: Professor                  |
++----------------------------------------+
+| + atualizarNome(nome: string)           |
+| + atualizarDataInicio(dataInicio: date) |
+| + atualizarDataTermino(dataTermino: date)|
+| + atualizarHorarioInicio(horarioInicio: time)|
+| + atualizarHorarioTermino(horarioTermino: time)|
+| + atualizarCargaHoraria(cargaHoraria: int)|
+| + atualizarConteudoProgramatico(conteudoProgramatico: string)|
+| + atualizarValorCurso(valorCurso: float)|
+| + atualizarProfessor(professor: Professor)|
++----------------------------------------+
+
++----------------------------------------+
+|              Professor                 |
++----------------------------------------+
+| - nome: string                          |
+| - telefoneCelular: string              |
+| - valorHoraAula: float                  |
++----------------------------------------+
+| + calcularValorAula()                   |
++----------------------------------------+
+
++----------------------------------------+
+|              Matricula                 |
++----------------------------------------+
+| - nomeAluno: string                     |
+| - telefone: string                     |
+| - curso: Curso                           |
++----------------------------------------+
+
++----------------------------------------+
+|        ControladorDeCursos             |
++----------------------------------------+
+| - listaCursos: list                     |
++----------------------------------------+
+| + registrarCurso(curso: Curso)         |
+| + atualizarCurso(curso: Curso)         |
+| + excluirCurso(curso: Curso)           |
+| + listarCursos()                        |
+| + matricularAluno(matricula: Matricula)|
++----------------------------------------+
+
++----------------------------------------+
+|       ControladorDeProfessores         |
++----------------------------------------+
+| - listaProfessores: list                |
++----------------------------------------+
+| + registrarProfessor(professor: Professor)|
+| + buscarProfessor(nome: string)         |
++----------------------------------------+
+
++----------------------------------------+
+|       ControladorDeMatriculas          |
++----------------------------------------+
+| - listaMatriculas: list                 |
++----------------------------------------+
+| + registrarMatricula(matricula: Matricula)|
+| + buscarMatriculaPorAluno(nomeAluno: string)|
+| + buscarMatriculaPorCurso(nomeCurso: string)|
++----------------------------------------+
+
+
+casos de uso 
++------------------------------------+
+|          Sistema de Cursos         |
++------------------------------------+
+|         Registrar Curso            |
+|         Editar Curso               |
+|         Excluir Curso              |
+|         Consultar Cursos           |
+|         Matricular-se em um Curso  |
++------------------------------------+

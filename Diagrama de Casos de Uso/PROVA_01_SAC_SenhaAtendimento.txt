@@ -1,0 +1,14 @@
+CENÁRIO: SENHA DE ATENDIMENTO
+A empresa Compre Bem implantou uma senha de atendimento para o SAC
+de suas lojas. O objetivo é reduzir o tempo de espera na fila.
+O atendimento é dividido por assuntos e cada caixa pode cuidar de um ou
+mais assuntos, ou um assunto pode ser tratado por um ou mais caixas.
+Para cada caixa deve-se saber o número e a posição (direita ou esquerda
+da máquina de senhas)
+Para cada caixa, deve-se ter um histórico de atendimentos, para se obter
+estatística. A estatística deve ser detalhada quanto ao tempo mínimo, médio e máximo de atendimento por caixa e por dia, além do número de atendimentos por assunto,
+A qualquer momento é preciso saber que caixa está com um determinado
+número de atendimento.
+
+
+CASO DE USO

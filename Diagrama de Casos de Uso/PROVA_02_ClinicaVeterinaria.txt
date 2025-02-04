@@ -1,0 +1,15 @@
+Clinica Veterinária
+	a. 	Cliente solicita marcação de consulta
+	
+	b. 	Secretaria verifica se o cliente é cadastrados	
+		i. se for cadastrado, marcar consulta
+		ii. se não for cadastrado, cadastrar cliente e marcar consulta
+	
+	c. 	Cliente informa sintomas
+		Veterinario sugere hipoteses
+		Animal passa por consulta, avaliacao e procedimentos/medicamentos
+		Veterinario pode solicitar novos exames
+		Sistema gera histórico
+		Sistema gera conta
+		
+	d. Secretária mantem cadastro atualizado
