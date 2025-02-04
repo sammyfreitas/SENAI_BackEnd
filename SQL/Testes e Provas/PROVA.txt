@@ -1,0 +1,273 @@
+#aluno: Anthony Samuel Sobral de Freitas
+#0-  crie um outro banco de dados para fazer a prova..
+create database prova_bd_backend;
+use prova_bd_backend;
+
+#-1- criar duas tabelas aluno e Curso
+#-Atributos:
+#-taluno(nome ,  cpf , idAluno PK  e autoIncremente, email , endereco ,  ativo_aluno char(1)).
+# curso(idcurso PK e autoIncremente,   nomeTurma ,   preco_aula ,  dataInicio e dataFinal DATE).
+ 
+ create table aluno (
+    idAluno int auto_increment primary key,
+    nome varchar(150) not null,
+    cpf varchar(14) not null,
+    email varchar(150) not null,
+    endereco varchar(250) not null,
+	bairro varchar(100) not null, 
+	cidade varchar(150) not null, 
+	estado varchar(2) not null, 
+	cep varchar(9) not null,
+	ativo_SN char(1) not null
+);
+ 
+ CREATE TABLE turma (
+    idCurso int auto_increment primary key,
+    nomeTurma varchar(150) not null,
+    preco_aula decimal (10,2) not null,
+    dataInicio date not null,
+    dataFinal date not null
+);
+
+#-2 - prencher com 15 alunos e com 4 turmas (ativo sn : (0 / 1) ,  idAluno e idcurso: (50 / 100))
+alter table aluno auto_increment = 50;
+alter table curso auto_increment = 50;
+alter table turma auto_increment = 50;
+
+insert into aluno (nome, cpf, email, endereco, bairro, cidade, estado, cep, ativo_SN) values
+  ('Anthony Freitas', '123.456.789-00', 'anthony.freitas@gmail.com', 'Rua Des Izidro, 100','Tijuca', 'Rio de Janeiro', 'RJ', 20000-000, '1'),
+  ('Guilherme Neves', '123.456.789-01', 'guilherme.freitas@gmail.com', 'Rua Lins de Vasconcelos, 200','Engenho Novo', 'Rio de Janeiro', 'RJ', 20000-001, '0'),
+  ('Willian Peng', '123.456.789-02', 'willian.peng@gmail.com', 'Rua Henry Ford, 300','Tijuca', 'Rio de Janeiro', 'RJ', 20000-002, '1'),
+  ('Patricia Nedina', '123.456.789-03', 'patricia.nedina@gmail.com', 'Rua Gastão Baiana, 400','Copacabana', 'Rio de Janeiro', 'RJ', 20000-003, '0'),
+  ('Fabiano Xavier', '123.456.789-04', 'fabiano.xavier@gmail.com', 'Rua Ary Parreiras, 500','Icaraí', 'Niteroi', 'RJ', 20000-004, '1'),
+  ('Glauco Carvalho', '123.456.789-05', 'glauco.carvalho@gmail.com', 'Rua Catete, 600','Catete', 'Rio de Janeiro', 'RJ', 20000-005, '0'),
+  ('Luis Augusto', '123.456.789-06', 'luis.augusto@gmail.com', 'Rua Miguel Lemos, 700','Copacabana', 'Rio de Janeiro', 'RJ', 20000-000, '1'),
+  ('Alan Sobral', '123.456.789-07', 'alan.sobral@gmail.com', 'Rua Sao Francisco Xavier, 800','Maracana', 'Rio de Janeiro', 'RJ', 20000-000, '1'),
+  ('Daniel Silva', '123.456.789-08', 'daniel.silva@gmail.com', 'Rua Guaxupe, 900','Grajau', 'Rio de Janeiro', 'RJ', 20000-000, '1'),
+  ('Bruno Melo', '123.456.789-09', 'bruno.melo@gmail.com', 'Rua Pinto Figueiredo, 1000','Tijuca', 'Rio de Janeiro', 'RJ', 20000-000, '1'),
+  ('Calel Melo', '123.456.789-10', 'calel.melo@gmail.com', 'Praça Saens Pena, 1100','Tijuca', 'Rio de Janeiro', 'RJ', 20000-000, '0'),
+  ('Cristiana Vianna', '123.456.789-11', 'cristina.vianna@gmail.com', 'Av Maracana, 1200','Maracana', 'Rio de Janeiro', 'RJ', 20000-000, '1'),
+  ('Leonardo Mohamed', '123.456.789-12', 'leonardo.mohamed@gmail.com', 'Rua Barão de Mesquita, 1300','Tijuca', 'Rio de Janeiro', 'RJ', 20000-000, '1'),
+  ('Mirian Chatona', '123.456.789-13', 'miriam.chatona@gmail.com', 'Rua Miguel Lemos, 1400','Tijuca', 'Rio de Janeiro', 'RJ', 20000-000, '0'),     
+  ('Victor Professor', '123.456.789-14', 'victor.professor@gmail.com', 'Rua Clovis Bevilacqua, 1500','Tijuca', 'Rio de Janeiro', 'RJ', 20000-000, '1');
+  
+insert into turma (idCurso, nomeTurma, preco_aula, dataInicio, dataFinal) values
+  ('Introducao ao Python', 50.00, '2023-05-01', '2023-06-01'),
+  ('My Sql', 35.00, '2023-06-01', '2023-07-01'),
+  ('Modelagem de Dados', 45.00, '2023-08-01', '2023-09-01'),
+  ('Diagrama de Classes', 55.00, '2023-10-01', '2023-11-01');
+
+#--3 - selecione quantos idAluno e Idturma esta entre 50 e 75  
+select count(*) from aluno where idaluno >= 50 and idaluno <= 75;
+select count(*) from curso where idCurso >= 50 and idcurso <= 75;
+
+#-4 - conta quantos Alunos estao com o ativo 0 
+select count(*) as qtd_alunos_inativos from aluno where ativo_SN = '0';
+
+#---5- quantas turmas custam mais que a media 
+select count(*) as qtd_cursos_acima_media from curso where preco_aula > (select avg (preco_aula) from curso);
+
+#7- quantas turmas custam menos que a media 
+select count(*) as qtd_cursos_abaixo_media from curso where preco_aula < (select avg(preco_aula) from curso);
+
+
+#-8- a soma dos preços de todos os turmas
+select sum(preco_aula) as soma_precos_turmas from curso;
+
+#----9 - adicione na tabela aluno o registo telefone, idade, notaAluno, turmaPertencente 
+alter table aluno 
+	add column telefone varchar(14),
+	add column idade smallint,
+	add column notaAluno float,
+	add column turmaPertencente int;
+
+# preenche telefone 
+update aluno set telefone = '(21) 2345-6789' where idAluno = 50;
+update aluno set telefone = '(21) 2345-6790' where idAluno = 51;
+update aluno set telefone = '(21) 2345-6791' where idAluno = 52;
+update aluno set telefone = '(21) 2345-6792' where idAluno = 53;
+update aluno set telefone = '(21) 2345-6793' where idAluno = 54;
+update aluno set telefone = '(21) 2345-6794' where idAluno = 55;
+update aluno set telefone = '(21) 2345-6795' where idAluno = 57;
+update aluno set telefone = '(21) 2345-6796' where idAluno = 58;
+update aluno set telefone = '(21) 2345-6797' where idAluno = 59;
+update aluno set telefone = '(21) 2345-6798' where idAluno = 60;
+update aluno set telefone = '(21) 2345-6799' where idAluno = 61;
+update aluno set telefone = '(21) 2345-6800' where idAluno = 62;
+update aluno set telefone = '(21) 2345-6801' where idAluno = 63;
+update aluno set telefone = '(21) 2345-6802' where idAluno = 64;
+update aluno set telefone = '(21) 2345-6803' where idAluno = 65;
+update aluno set telefone = '(21) 2345-6804' where idAluno = 66;
+update aluno set telefone = '(21) 2345-6804' where idAluno = 67;
+update aluno set telefone = '(21) 2345-6805' where idAluno = 68;
+update aluno set telefone = '(21) 2345-6806' where idAluno = 69;
+update aluno set telefone = '(21) 2345-6807' where idAluno = 70;
+update aluno set telefone = '(21) 2345-6808' where idAluno = 71;
+update aluno set telefone = '(21) 2345-6809' where idAluno = 72;
+update aluno set telefone = '(21) 2345-6810' where idAluno = 73;
+update aluno set telefone = '(21) 2345-6811' where idAluno = 74;
+update aluno set telefone = '(21) 2345-6813' where idAluno = 75;
+
+
+# preenche idade
+update aluno set idade = 20 where idAluno = 50;
+update aluno set idade = 21 where idAluno = 51;
+update aluno set idade = 22 where idAluno = 52;
+update aluno set idade = 23 where idAluno = 53;
+update aluno set idade = 20 where idAluno = 54;
+update aluno set idade = 21 where idAluno = 55;
+update aluno set idade = 22 where idAluno = 57;
+update aluno set idade = 23 where idAluno = 58;
+update aluno set idade = 20 where idAluno = 59;
+update aluno set idade = 21 where idAluno = 60;
+update aluno set idade = 22 where idAluno = 61;
+update aluno set idade = 23 where idAluno = 62;
+update aluno set idade = 23 where idAluno = 63;
+update aluno set idade = 20 where idAluno = 64;
+update aluno set idade = 21 where idAluno = 65;
+update aluno set idade = 22 where idAluno = 66;
+update aluno set idade = 23 where idAluno = 67;
+update aluno set idade = 21 where idAluno = 68;
+update aluno set idade = 22 where idAluno = 69;
+update aluno set idade = 23 where idAluno = 70;
+update aluno set idade = 20 where idAluno = 71;
+update aluno set idade = 21 where idAluno = 72;
+update aluno set idade = 22 where idAluno = 73;
+update aluno set idade = 23 where idAluno = 74;
+update aluno set idade = 20 where idAluno = 75;
+
+# preenche notaAluno
+update aluno set notaAluno = 7.5 where idAluno = 50;
+update aluno set notaAluno = 8.0 where idAluno = 51;
+update aluno set notaAluno = 8.5 where idAluno = 52;
+update aluno set notaAluno = 9.5 where idAluno = 53;
+update aluno set notaAluno = 7.5 where idAluno = 54;
+update aluno set notaAluno = 8.0 where idAluno = 55;
+update aluno set notaAluno = 8.5 where idAluno = 57;
+update aluno set notaAluno = 9.5 where idAluno = 58;
+update aluno set notaAluno = 7.5 where idAluno = 59;
+update aluno set notaAluno = 8.0 where idAluno = 60;
+update aluno set notaAluno = 8.5 where idAluno = 61;
+update aluno set notaAluno = 9.5 where idAluno = 62;
+update aluno set notaAluno = 9.5 where idAluno = 63;
+update aluno set notaAluno = 7.5 where idAluno = 64;
+update aluno set notaAluno = 8.0 where idAluno = 65;
+update aluno set notaAluno = 8.5 where idAluno = 66;
+update aluno set notaAluno = 9.5 where idAluno = 67;
+update aluno set notaAluno = 8.0 where idAluno = 68;
+update aluno set notaAluno = 8.5 where idAluno = 69;
+update aluno set notaAluno = 9.5 where idAluno = 70;
+update aluno set notaAluno = 7.5 where idAluno = 71;
+update aluno set notaAluno = 8.0 where idAluno = 72;
+update aluno set notaAluno = 8.5 where idAluno = 73;
+update aluno set notaAluno = 9.5 where idAluno = 74;
+update aluno set notaAluno = 7.5 where idAluno = 75;
+
+# preenche turmaPertencente
+update aluno set turmaPertencente = 51 where idAluno = 50;
+update aluno set turmaPertencente = 52 where idAluno = 51;
+update aluno set turmaPertencente = 53 where idAluno = 52;
+update aluno set turmaPertencente = 54 where idAluno = 53;
+update aluno set turmaPertencente = 51 where idAluno = 54;
+update aluno set turmaPertencente = 52 where idAluno = 55;
+update aluno set turmaPertencente = 53 where idAluno = 57;
+update aluno set turmaPertencente = 54 where idAluno = 58;
+update aluno set turmaPertencente = 51 where idAluno = 59;
+update aluno set turmaPertencente = 52 where idAluno = 60;
+update aluno set turmaPertencente = 53 where idAluno = 61;
+update aluno set turmaPertencente = 54 where idAluno = 62;
+update aluno set turmaPertencente = 54 where idAluno = 63;
+update aluno set turmaPertencente = 51 where idAluno = 64;
+update aluno set turmaPertencente = 52 where idAluno = 65;
+update aluno set turmaPertencente = 53 where idAluno = 66;
+update aluno set turmaPertencente = 54 where idAluno = 67;
+update aluno set turmaPertencente = 52 where idAluno = 68;
+update aluno set turmaPertencente = 53 where idAluno = 69;
+update aluno set turmaPertencente = 54 where idAluno = 70;
+update aluno set turmaPertencente = 51 where idAluno = 71;
+update aluno set turmaPertencente = 52 where idAluno = 72;
+update aluno set turmaPertencente = 53 where idAluno = 73;
+update aluno set turmaPertencente = 54 where idAluno = 74;
+update aluno set turmaPertencente = 51 where idAluno = 75;
+
+
+#add ao curso o registro ProfessorTurma, numeroSala 
+alter table curso 
+	add column profTurma varchar(150),
+	add column numerosala int;
+
+# preenche todos professores. 
+update curso set profTurma = 'Bill Gates' where idCurso = 50;
+update curso set profTurma = 'Mark Zuckerberg' where idCurso = 51;
+update curso set profTurma = 'Ellen Musk' where idCurso = 52;
+update curso set profTurma = 'Steve Jobs' where idCurso = 53;
+
+# preenche todas as salas. 
+update curso set numeroSala = '201' where idCurso = 50;
+update curso set numeroSala = '202' where idCurso = 51;
+update curso set numeroSala  = '203' where idCurso = 52;
+update curso set numeroSala  = '204' where idCurso = 53;
+
+#10 - mostre na tela o nome do professor e o preço da aula  mais cara e outro do mais barato 
+select profTurma, preco_aula from curso where preco = (select max(preco_aula) from curso);
+select profTurma, preco_aula from curso where preco_aula = (select min(preco_aula) from curso);
+
+#11 - ordene a tabela aluno por ordem decrescente no campo nome
+select * from aluno order by nome desc;
+
+#12 -  busque na tabela o nome dos alunos que estao ativo 
+select * from aluno where ativo_SN = '1';
+
+#13-  busque os nomes dos alunos que comecem com a letra A e termine com a letra O
+select nome from aluno where nome like 'A%O';
+
+#14 - busque o nome do professor junto da materia que esta mais cheia e a mais vazia. 
+depende de concatenar informações entre as tabelas - criar uma tabela nova?
+
+15 - mostre o aluno com maior nota e a menor nota
+select nome, notaAluno from aluno where notaAluno = (select max(notaAluno) from aluno);
+select nome, notaAluno from aluno where notaAluno = (select min(notaAluno) from aluno);
+
+16 - a media das notas dos alunos 
+select avg(notaAluno) as media_das_Notas FROM aluno;
+
+17 - quem esta abaixo da media dos alunos 
+select nome, notaAluno from aluno where notaAluno < (select avg(notaAluno) from aluno);
+
+e quem esta acima da media do aluno 
+select nome, notaAluno from aluno where notaAluno > (select avg(notaAluno) from aluno);
+
+18 - use o update para mudar a nota de quem tem a menor nota e ponha ele na media da turma 
+update aluno set notaAluno = (select avg(notaAluno) from aluno) where notaAluno = (select min(notaAluno) from aluno);
+
+19-  troque um aluno de uma turma e ponha em outra turma 
+update aluno set turmaPertencente = 52 where idaluno = 76;
+update aluno set turmaPertencente = 51 where idaluno = 77;
+update aluno set turmaPertencente = 53 where idaluno = 78;
+update aluno set turmaPertencente = 54 where idaluno = 79;
+
+20 - troque um professor de uma turma e ponha no outro
+update curso set profTurma = "Guido van Rossum" where idCurso = 50;
+insert into curso (nomeTurma, preco_aula, dataInicio, dataFinal, profTurma, numeroSala) values
+  ('Windows', 48.00, '2023-05-01', '2023-06-01', 'Bill Gates', 205);
+
+
+
+comando para deletar duplicados (não funcionou)
+
+DELETE FROM aluno
+WHERE nome IN (
+   SELECT nome
+   FROM aluno 
+   GROUP BY nome 
+   HAVING COUNT(*) > 1
+)
+
+DELETE FROM aluno WHERE idAluno >= 80;
+
+
+#14 - busque o nome do professor junto da materia que esta mais cheia e a mais vazia. 
+depende de concatenar informações entre as tabelas - criar uma tabela nova?
+
+select curso.profTurma, count (aluno.idAluno) as num_alunos from curso join aluno on curso.nomeTurma = aluno.turmaPertencente group by curso.profTurma having count(aluno.idAluno) = (select max(num_alunos) from (select count(idAluno) as num_alunos FROM aluno GROUP BY turmaPertencente) AS t1)
+   OR COUNT(aluno.idAluno) = (SELECT MIN(num_alunos) FROM (SELECT COUNT(idAluno) AS num_alunos FROM aluno GROUP BY turmaPertencente) AS t2)
