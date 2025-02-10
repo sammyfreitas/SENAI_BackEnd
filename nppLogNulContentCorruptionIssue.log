@@ -1,0 +1,80 @@
+2024-01-03 21:54:06  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-03 21:54:06  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-03 21:54:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is opened.
+2024-01-03 21:54:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml  8270/8270 bytes are written.
+2024-01-03 21:54:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is closed.
+2024-01-03 21:54:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is opened.
+2024-01-03 21:54:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml  4574/4574 bytes are written.
+2024-01-03 21:54:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is closed.
+2024-01-03 21:54:06  WM_DESTROY (isEndSessionStarted == true)
+2024-01-09 21:52:06  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-09 21:52:06  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-09 21:52:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is opened.
+2024-01-09 21:52:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml  8270/8270 bytes are written.
+2024-01-09 21:52:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is closed.
+2024-01-09 21:52:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is opened.
+2024-01-09 21:52:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml  7029/7029 bytes are written.
+2024-01-09 21:52:06  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is closed.
+2024-01-12 21:52:03  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-12 21:52:03  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-12 21:52:03  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is opened.
+2024-01-12 21:52:03  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml  8270/8270 bytes are written.
+2024-01-12 21:52:03  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is closed.
+2024-01-12 21:52:03  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is opened.
+2024-01-12 21:52:03  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml  7032/7032 bytes are written.
+2024-01-12 21:52:03  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is closed.
+2024-01-12 21:52:03  WM_DESTROY (isEndSessionStarted == true)
+2024-01-18 16:10:23  WM_QUERYENDSESSION (lParam: 1073741824 - ENDSESSION_CRITICAL) =====================================
+2024-01-18 16:10:23  WM_ENDSESSION (wParam: TRUE, lParam: 1073741824 - ENDSESSION_CRITICAL)
+2024-01-18 16:10:23  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is opened.
+2024-01-18 16:10:23  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml  8270/8270 bytes are written.
+2024-01-18 16:10:23  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is closed.
+2024-01-18 16:10:23  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is opened.
+2024-01-18 16:10:23  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml  7656/7656 bytes are written.
+2024-01-18 16:10:23  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is closed.
+2024-01-18 16:10:23  WM_DESTROY (isEndSessionStarted == true)
+2024-01-18 21:52:38  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-18 21:52:38  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-18 21:52:38  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is opened.
+2024-01-18 21:52:38  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml  8270/8270 bytes are written.
+2024-01-18 21:52:38  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is closed.
+2024-01-18 21:52:38  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is opened.
+2024-01-18 21:52:38  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml  8899/8899 bytes are written.
+2024-01-18 21:52:38  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is closed.
+2024-01-18 21:52:38  WM_DESTROY (isEndSessionStarted == true)
+2024-02-02 20:46:34  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-02-02 20:46:34  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-02-02 20:46:34  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is opened.
+2024-02-02 20:46:34  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml  9052/9052 bytes are written.
+2024-02-02 20:46:34  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is closed.
+2024-02-02 20:46:34  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is opened.
+2024-02-02 20:46:34  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml  8181/8181 bytes are written.
+2024-02-02 20:46:34  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is closed.
+2024-02-02 20:46:34  WM_DESTROY (isEndSessionStarted == true)
+2024-02-15 17:14:06  WM_QUERYENDSESSION (lParam: 1073741824 - ENDSESSION_CRITICAL) =====================================
+2024-02-15 17:14:07  WM_ENDSESSION (wParam: TRUE, lParam: 1073741824 - ENDSESSION_CRITICAL)
+2024-02-15 17:14:07  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is opened.
+2024-02-15 17:14:07  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml  11561/11561 bytes are written.
+2024-02-15 17:14:07  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is closed.
+2024-02-15 17:14:07  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is opened.
+2024-02-15 17:14:07  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml  10443/10443 bytes are written.
+2024-02-15 17:14:07  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is closed.
+2024-02-15 17:14:07  WM_DESTROY (isEndSessionStarted == true)
+2024-02-16 09:13:57  WM_QUERYENDSESSION (lParam: 1073741824 - ENDSESSION_CRITICAL) =====================================
+2024-02-16 09:13:57  WM_ENDSESSION (wParam: TRUE, lParam: 1073741824 - ENDSESSION_CRITICAL)
+2024-02-16 09:13:57  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is opened.
+2024-02-16 09:13:57  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml  9863/9863 bytes are written.
+2024-02-16 09:13:57  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\config.xml is closed.
+2024-02-16 09:13:57  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is opened.
+2024-02-16 09:13:57  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml  11066/11066 bytes are written.
+2024-02-16 09:13:57  C:\Users\ansfreitas\Desktop\Tony\Notepad++_8.6.portable.x64\session.xml is closed.
+2024-02-16 09:13:57  WM_DESTROY (isEndSessionStarted == true)
+2024-05-07 20:44:36  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-05-07 20:44:36  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-05-07 20:44:36  E:\Downloads\Notepad++_8.6.portable.x64\config.xml is opened.
+2024-05-07 20:44:36  E:\Downloads\Notepad++_8.6.portable.x64\config.xml  9865/9865 bytes are written.
+2024-05-07 20:44:36  E:\Downloads\Notepad++_8.6.portable.x64\config.xml is closed.
+2024-05-07 20:44:36  E:\Downloads\Notepad++_8.6.portable.x64\session.xml is opened.
+2024-05-07 20:44:36  E:\Downloads\Notepad++_8.6.portable.x64\session.xml  5238/5238 bytes are written.
+2024-05-07 20:44:36  E:\Downloads\Notepad++_8.6.portable.x64\session.xml is closed.
+2024-05-07 20:44:36  WM_DESTROY (isEndSessionStarted == true)

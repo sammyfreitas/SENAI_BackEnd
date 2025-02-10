@@ -1,0 +1,48 @@
+Exercício:
+Verificar se seus computadores atendem aos requisitos mínimos de vários softwares:
+
+1. **Microsoft Office 365**: PODE SER INSTALADO
+   - Requisitos Mínimos: Processador de 1 GHz ou mais rápido, 2 GB de RAM, 3 GB de espaço em disco disponível, resolução de tela de 1280 x 768.
+   - Exercício: Os alunos devem verificar se seus computadores atendem a esses requisitos e identificar qualquer componente que possa precisar de upgrade.
+
+
+2. **Adobe Photoshop CC**: NÃO
+   - Requisitos Mínimos: Processador Intel ou AMD de 64 bits com suporte a sistema operacional de 64 bits, 8 GB de RAM, 2.6 GB de espaço em disco disponível, resolução de tela de 1280 x 800.
+   - Exercício: Os alunos devem verificar se seus computadores possuem os requisitos mínimos de hardware para executar o Photoshop e listar quaisquer componentes que precisem ser atualizados.
+
+3. **Autodesk AutoCAD 2022**:
+   - Requisitos Mínimos: Processador de 2.5 GHz (3 GHz ou superior recomendado), 8 GB de RAM (16 GB ou mais recomendado), 7 GB de espaço em disco disponível, resolução de tela de 1920 x 1080.
+   - Exercício: Os alunos devem comparar os requisitos mínimos com as especificações de seus computadores e determinar se são compatíveis com o AutoCAD.
+
+4. **Unity 3D**:
+   - Requisitos Mínimos: Processador com suporte a SSE2, 4 GB de RAM, 6 GB de espaço em disco disponível, placa de vídeo com suporte a Shader Model 3.0.
+   - Exercício: Os alunos devem avaliar se seus computadores possuem os requisitos mínimos de hardware para executar o Unity 3D e identificar quaisquer componentes que precisem ser atualizados.
+
+5. **Python 3.x**:
+   - Requisitos Mínimos: Qualquer computador moderno deve ser capaz de executar Python. No entanto, recomenda-se pelo menos 1 GB de RAM e espaço em disco suficiente para instalar o Python e quaisquer bibliotecas adicionais.
+   - Exercício: Este é um exercício mais simples, onde os alunos devem verificar se têm espaço em disco suficiente e RAM para executar o Python em seus computadores.
+
+
+6. **Adobe Premiere Pro**:
+   - Requisitos Mínimos: Processador Intel de 6ª geração ou equivalente AMD, 8 GB de RAM (16 GB recomendados), 4 GB de espaço em disco disponível, placa de vídeo compatível com OpenGL 3.2.
+   - Exercício: Os alunos devem verificar se seus computadores atendem a esses requisitos para garantir uma experiência de edição de vídeo fluida.
+
+7. **SketchUp**:
+   - Requisitos Mínimos: Processador de 2.1 GHz (2.8 GHz recomendado), 4 GB de RAM (8 GB recomendados), 700 MB de espaço em disco disponível, placa de vídeo compatível com OpenGL 3.0.
+   - Exercício: Os alunos devem verificar se seus computadores têm os recursos mínimos necessários para criar modelos 3D no SketchUp.
+
+8. **Visual Studio Code**:
+   - Requisitos Mínimos: Processador Intel ou AMD de 1.6 GHz ou superior, 1 GB de RAM, 200 MB de espaço em disco disponível.
+   - Exercício: Este é um exercício mais simples, onde os alunos devem verificar se seus computadores possuem os requisitos básicos para executar o Visual Studio Code, um editor de código leve.
+
+9. **Adobe Illustrator**:
+   - Requisitos Mínimos: Processador Intel ou AMD de 64 bits, 8 GB de RAM (16 GB recomendados), 2 GB de espaço em disco disponível, resolução de tela de 1024 x 768.
+   - Exercício: Os alunos devem garantir que seus computadores atendam aos requisitos mínimos para criar gráficos vetoriais no Adobe Illustrator.
+
+10. **FL Studio**:
+   - Requisitos Mínimos: Processador Intel ou AMD de 2 GHz, 4 GB de RAM (8 GB recomendados), 4 GB de espaço em disco disponível, placa de som compatível.
+   - Exercício: Os alunos devem verificar se seus computadores possuem os recursos mínimos para produzir música no FL Studio, um software de produção musical.
+
+11. **Sublime Text**:
+   - Requisitos Mínimos: Processador AMD de 2 GHz ou superior, 2 GB de RAM, 100 MB de espaço em disco disponível.
+   - Exercício: Este é outro exercício simples, onde os alunos devem verificar se seus computadores possuem os requisitos mínimos para executar o Sublime Text, um editor de texto leve e poderoso.
