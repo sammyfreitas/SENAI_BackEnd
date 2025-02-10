@@ -1,0 +1,61 @@
+Slide 1: Introdução
+
+Título: Aspectos éticos e legais da comunicação em sites
+Subtítulo: Fundamentos para FrontEnd
+Breve explicação da importância da ética e legalidade na comunicação online.
+Slide 2: Ética na Comunicação em Sites
+
+Definição de ética na comunicação digital.
+Destaque para a responsabilidade do desenvolvedor FrontEnd.
+Exemplos de práticas éticas na criação de interfaces.
+Slide 3: Legislação Aplicada
+
+Principais leis relacionadas à comunicação online (ex: LGPD no Brasil).
+Consequências legais para não conformidade.
+Como a legislação impacta o trabalho de um desenvolvedor FrontEnd.
+Slide 4: Proteção de Dados
+
+Importância da proteção de dados pessoais.
+Boas práticas para garantir a privacidade dos usuários.
+Exemplos de violações de dados e suas consequências.
+Slide 5: Acessibilidade e Inclusão
+
+Explicação sobre a importância de designs acessíveis.
+Destaque para a legislação que exige acessibilidade.
+Ferramentas e práticas para garantir inclusão.
+Slide 6: Segurança na Comunicação
+
+Abordagem sobre SSL/TLS para segurança na transmissão de dados.
+Práticas seguras de programação FrontEnd.
+Casos de ataques comuns e como evitá-los.
+Slide 7: Responsividade e Adaptabilidade
+
+Significado da responsividade em sites.
+Como garantir uma experiência consistente em diferentes dispositivos.
+Exemplos de problemas éticos relacionados à má adaptação.
+Slide 8: Conclusão e Boas Práticas
+
+Recapitulação dos pontos-chave.
+Destaque para a importância de aplicar continuamente boas práticas éticas e legais.
+Incentivo à busca constante por atualizações legais.
+Exercício 1: Testando o Conhecimento Legal
+
+Qual é a importância da LGPD (Lei Geral de Proteção de Dados) para desenvolvedores FrontEnd?
+Cite duas práticas éticas na comunicação digital.
+O que significa responsividade em termos de desenvolvimento FrontEnd?
+Explique brevemente o que é SSL/TLS e qual sua relevância para a segurança na comunicação online.
+Como a acessibilidade em designs de interfaces impacta a ética na comunicação?
+Exercício 2: Casos Práticos de Ética e Legalidade
+
+Analise um cenário hipotético onde a privacidade do usuário é comprometida em um site. Quais medidas éticas você sugeriria para corrigir a situação?
+Como um desenvolvedor FrontEnd pode garantir que um site atenda aos requisitos de acessibilidade?
+Quais são os possíveis impactos legais para um site que não está em conformidade com a LGPD?
+Descreva um exemplo de ataque cibernético comum e como um desenvolvedor FrontEnd pode ajudar a preveni-lo.
+Em que medida a responsividade afeta a experiência do usuário e como isso se relaciona com a ética na comunicação online?
+Exercício 3: Aplicação Prática de Boas Práticas Éticas
+
+Proponha um conjunto de diretrizes éticas para o desenvolvimento de uma interface de site.
+Desenvolva um checklist para garantir a conformidade com a LGPD durante o desenvolvimento FrontEnd.
+Como você poderia integrar medidas de segurança em um projeto FrontEnd para proteger contra ataques comuns?
+Explique como garantir a acessibilidade em um design de interface e por que isso é ético.
+Discuta a importância de manter um site atualizado em relação às mudanças na legislação e ética digital.

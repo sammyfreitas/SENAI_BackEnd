@@ -1,0 +1,26 @@
+
+Criar um código front e back end, html, css, javascript separados, back end gratuito
+
+banco de dados 1 com tipos de quarto e mostrar os valores 
+coluna 1 - numero do quarto
+coluna 2 - tipo do quarto
+coluna 3 - valor
+Opções: solteiro, solteiro duplo, solteiro triplo, casal, casal com cama auxiliar
+marcar opção de varanda e baseado num banco de dados, saber o valor de cada tipo de quarto e os números de quartos disponiveis.
+
+banco de dados 2 com serviço de quarto onde poderá ter itens de frigobar que podem ser acrescentados a conta de um quarto
+opções: 
+coluna 1 - codigo do produto
+coluna 2 - tipo de produto
+coluna 3 - valor
+almoço executivo, jantar executivo, lacarte1, lacarte2, lacarte3, menuinfantil, cafe da manha simples, cafe da manha completo, cafe da manhã colonial, 5 tipos de chocolate, refrigerante, cafe, suco, todinho, 3 marcas de cerveja, em tamanho lata, garrafa 600ml, garrafa 300ml, vodka-ice, drink1, drink2, drink3
+
+banco de dados 3 com os dados dos clientes
+cpf, nome, rg, endereço, data nascimento, data de entrada
+
+banco de dados 4 com a parte financeira onde será adicionado valores para os quartos
+conta deverá ter 
+valor da diaria
+numero de diarias
+itens acrescidos de serviço de quarto
+valor final da conta
